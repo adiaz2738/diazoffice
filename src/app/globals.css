@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #0a0a0a;       /* primary text / dark surfaces */
+  --color-paper: #fafaf8;     /* primary background, warm off-white */
+  --color-paper-dim: #f0efea; /* secondary surface, section alternation */
+  --color-line: #dedcd4;      /* hairline borders/dividers */
+  --color-muted: #6b6b64;     /* secondary text */
+  --color-kw-red: #ce011f;    /* accent only — links, tags, focus, CTAs */
+  --color-kw-red-dim: #ce011f1a;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-line: var(--color-line);
+  --color-muted: var(--color-muted);
+  --color-kw-red: var(--color-kw-red);
+  --color-kw-red-dim: var(--color-kw-red-dim);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Visible keyboard focus everywhere — never remove this without replacing it. */
+:focus-visible {
+  outline: 2px solid var(--color-kw-red);
+  outline-offset: 2px;
+}
+
+/* Eyebrow / label treatment used for categories, dates, section tags —
+   the one recurring typographic signature across the site. */
+.label-tag {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.label-tag--accent {
+  color: var(--color-kw-red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Leaflet map container needs an explicit height or it renders collapsed */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: var(--color-paper-dim);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 2px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.leaflet-popup-tip {
+  background: var(--color-ink);
+}
+
+.leaflet-popup-content a {
+  color: var(--color-paper);
+  text-decoration: underline;
+  text-decoration-color: var(--color-kw-red);
+}
