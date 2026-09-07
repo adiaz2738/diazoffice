@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/posts";
 import { PostEntry } from "@/components/post-entry";
@@ -10,8 +11,17 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24">
+      <section className="relative overflow-hidden border-b border-line">
+        <Image
+          src="/images/hero/monterey-hero.jpg"
+          alt="Monterey Peninsula coastline"
+          fill
+          priority
+          className="object-cover -z-20"
+          style={{ objectPosition: "center 45%" }}
+        />
+        <div className="absolute inset-0 -z-10 bg-paper/80" />
+        <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24">
           <p className="label-tag label-tag--accent mb-5">Monterey County, California</p>
           <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05] max-w-3xl">
             The history behind the Monterey Peninsula.
