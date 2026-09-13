@@ -36,6 +36,18 @@ export const metadata: Metadata = {
   },
 };
 
+const realEstateAgentSchema = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  name: siteConfig.name,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  url: siteConfig.url,
+  areaServed: ["Monterey County, CA"],
+  // address: TODO — add a PostalAddress object here if/when an office address should be published.
+  sameAs: [siteConfig.social.youtube].filter(Boolean),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,6 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-paper text-ink antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

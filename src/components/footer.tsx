@@ -36,6 +36,9 @@ export function Footer() {
           <Link href="/listings" className="text-muted hover:text-ink">
             Listings
           </Link>
+          <Link href="/faq" className="text-muted hover:text-ink">
+            FAQ
+          </Link>
         </nav>
 
         <div>

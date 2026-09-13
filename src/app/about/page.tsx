@@ -43,6 +43,13 @@ export default function AboutPage() {
           Contact me <ArrowRight size={16} />
         </Link>
       </div>
+
+      <p className="mt-6 text-sm text-muted">
+        Have a quick question first?{" "}
+        <Link href="/faq" className="underline decoration-kw-red underline-offset-2 hover:text-kw-red">
+          Common questions
+        </Link>
+      </p>
     </div>
   );
 }
