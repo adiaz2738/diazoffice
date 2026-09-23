@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { blogCategories, siteConfig } from "@/lib/site-config";
+import { PostTimeline } from "@/components/post-timeline";
+import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -81,6 +83,14 @@ export default async function BlogPostPage({
         <span>{post.readingTime}</span>
       </div>
 
+      {post.timeline && post.timeline.length > 0 && post.timelinePlacement === "top" && (
+        post.timelineStyle === "horizontal" ? (
+          <PostTimelineHorizontal entries={post.timeline} />
+        ) : (
+          <PostTimeline entries={post.timeline} />
+        )
+      )}
+
       <div
         className="prose-content mt-10 max-w-none
         [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:tracking-tight [&>h2]:mt-12 [&>h2]:mb-4
@@ -94,6 +104,14 @@ export default async function BlogPostPage({
       >
         <MDXRemote source={post.content} />
       </div>
+
+      {post.timeline && post.timeline.length > 0 && post.timelinePlacement !== "top" && (
+        post.timelineStyle === "horizontal" ? (
+          <PostTimelineHorizontal entries={post.timeline} />
+        ) : (
+          <PostTimeline entries={post.timeline} />
+        )
+      )}
 
       {post.sources && post.sources.length > 0 && (
         <div className="mt-14 pt-8 border-t border-line">

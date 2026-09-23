@@ -9,12 +9,12 @@ export const faqs: FaqEntry[] = [
   {
     question: "Who is Anthony Diaz?",
     answer:
-      "[TODO: fill in with real, specific detail — no unverifiable superlatives like \"the best,\" use concrete facts: years active, specific towns/neighborhoods served, transaction count if comfortable sharing, what makes the approach genuinely different]",
+      "I'm a REALTOR with the Monterey Peninsula Home Team at Keller Williams Coastal Estates, a team with over 100 years of combined Monterey Peninsula real estate experience. What sets my own approach apart is that I write about the history behind the towns I sell in, from Carmel's cottages to Cannery Row.",
   },
   {
     question: "What areas of Monterey County do you work in?",
     answer:
-      "[TODO: fill in with real, specific detail — no unverifiable superlatives like \"the best,\" use concrete facts: years active, specific towns/neighborhoods served, transaction count if comfortable sharing, what makes the approach genuinely different]",
+      "Carmel-by-the-Sea, Monterey, Pacific Grove, Moss Landing, and Salinas.",
   },
   {
     question: "What makes you different from other Realtors on the Monterey Peninsula?",
@@ -28,8 +28,12 @@ export const faqs: FaqEntry[] = [
   },
   {
     question: "Do you work with both buyers and sellers?",
+    answer: "Yes, I work with both buyers and sellers.",
+  },
+  {
+    question: "What real estate team is Anthony Diaz part of?",
     answer:
-      "[TODO: fill in with real, specific detail — no unverifiable superlatives like \"the best,\" use concrete facts: years active, specific towns/neighborhoods served, transaction count if comfortable sharing, what makes the approach genuinely different]",
+      "Anthony Diaz is part of the Monterey Peninsula Home Team at Keller Williams Coastal Estates, a team with over 100 years of combined Monterey Peninsula real estate experience.",
   },
   {
     question: "How can I contact you?",
