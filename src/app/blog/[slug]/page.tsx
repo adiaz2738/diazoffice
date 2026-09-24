@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
@@ -82,6 +83,17 @@ export default async function BlogPostPage({
         <span aria-hidden>·</span>
         <span>{post.readingTime}</span>
       </div>
+
+      {post.coverImage && (
+        <div className="mt-8 aspect-video border border-line relative overflow-hidden">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
 
       {post.timeline && post.timeline.length > 0 && post.timelinePlacement === "top" && (
         post.timelineStyle === "horizontal" ? (

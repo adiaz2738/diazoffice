@@ -58,9 +58,13 @@ export function Footer() {
       </div>
 
       <div className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-6 flex flex-col sm:flex-row gap-2 sm:justify-between text-xs text-muted">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 py-6 flex flex-col gap-2 text-xs text-muted">
           <p>© {new Date().getFullYear()} Anthony Diaz. All rights reserved.</p>
-          <p>Equal Housing Opportunity.</p>
+          <p>
+            Keller Williams Realty, Inc., a franchise company, is an Equal Opportunity Employer
+            and supports the Fair Housing Act. Each Keller Williams® office is independently owned
+            and operated.
+          </p>
         </div>
       </div>
     </footer>
