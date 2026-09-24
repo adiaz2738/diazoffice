@@ -45,6 +45,17 @@ Nothing else matters until this is done. Skip everything below.
       auth means no separate Clerk setup is needed to gate the admin panel;
       Neon would require adding Clerk (or similar) separately for the same
       protection.
+- [ ] Bilingual site, scoped version: path-based routing (diazoffice.com/es/...
+      via a Next.js [locale] segment), NOT a subdomain, to keep SEO authority
+      unified under one domain. Fully translate only the conversion-critical
+      pages: Home, About, Contact, Buyer's Guide. Add prominent "Hablo
+      español" / bilingual-agent messaging site-wide regardless of full
+      translation status, since that's a strong differentiator on its own.
+      Translate blog posts selectively as bandwidth allows, not as a blanket
+      requirement, a language toggle should only appear on posts that
+      actually have a translation, not link to English-only content. Browser-
+      side translate (Chrome's built-in feature) covers the gap for anything
+      not manually translated, no action needed there, it already works.
 
 ---
 Keep this file updated as items get done: check them off, and if something new

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { primaryNav, siteConfig } from "@/lib/site-config";
 import { NewsletterForm } from "@/components/newsletter-form";
@@ -7,7 +8,13 @@ export function Footer() {
     <footer className="border-t border-line mt-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-14 grid gap-12 md:grid-cols-3">
         <div>
-          <p className="font-semibold text-lg">Anthony Diaz</p>
+          <Image
+            src="/diazoffice-logo.svg"
+            alt="Anthony Diaz"
+            width={150}
+            height={36}
+            className="h-9 w-auto"
+          />
           <p className="mt-2 text-sm text-muted leading-relaxed max-w-xs">
             {siteConfig.brokerage}
             <br />

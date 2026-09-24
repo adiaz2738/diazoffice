@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -14,12 +15,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link
-          href="/"
-          className="font-semibold tracking-tight text-lg"
-          onClick={() => setOpen(false)}
-        >
-          Anthony Diaz
+        <Link href="/" onClick={() => setOpen(false)}>
+          <Image
+            src="/diazoffice-logo.svg"
+            alt="Anthony Diaz"
+            width={140}
+            height={34}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
