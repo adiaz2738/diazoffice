@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
+import { getPostPath } from "@/lib/guides";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const postRoutes = getAllPosts().map((post) => ({
-    url: `${siteConfig.url}/blog/${post.slug}`,
+    url: `${siteConfig.url}${getPostPath(post)}`,
     lastModified: new Date(post.date),
   }));
 

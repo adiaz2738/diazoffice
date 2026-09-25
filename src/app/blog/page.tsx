@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import { PostEntry } from "@/components/post-entry";
 import { blogCategories, type BlogCategorySlug } from "@/lib/site-config";
+import { isGuideCategory } from "@/lib/guides";
 import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
@@ -21,7 +22,10 @@ export default async function BlogPage({
     | BlogCategorySlug
     | undefined;
 
-  const posts = getAllPosts().filter((p) => !activeCategory || p.category === activeCategory);
+  const posts = getAllPosts().filter(
+    (p) => !isGuideCategory(p.category) && (!activeCategory || p.category === activeCategory)
+  );
+  const filterableCategories = blogCategories.filter((c) => !isGuideCategory(c.slug));
 
   return (
     <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20">
@@ -30,7 +34,7 @@ export default async function BlogPage({
 
       <div className="flex flex-wrap gap-2 mb-12 border-b border-line pb-8">
         <FilterPill href="/blog" active={!activeCategory} label="All" />
-        {blogCategories.map((c) => (
+        {filterableCategories.map((c) => (
           <FilterPill
             key={c.slug}
             href={`/blog?category=${c.slug}`}

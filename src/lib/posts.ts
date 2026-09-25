@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import readingTime from "reading-time";
 import type { Post, PostFrontmatter } from "@/types/post";
 import type { BlogCategorySlug } from "@/lib/site-config";
+import { sortChapters } from "@/lib/guides";
 
 const POSTS_DIR = path.join(process.cwd(), "src/content/posts");
 
@@ -57,4 +58,28 @@ export function getPostsByCategory(category: BlogCategorySlug): Post[] {
 
 export function getAllSlugs(): string[] {
   return readAllSlugs();
+}
+
+/** A guide's chapters, sorted by chapter number, drafts already excluded outside dev. */
+export function getGuideChapters(category: BlogCategorySlug): Post[] {
+  return sortChapters(getPostsByCategory(category));
+}
+
+/** A single chapter, but only if it actually belongs to that guide's category. */
+export function getGuideChapterBySlug(category: BlogCategorySlug, slug: string): Post | null {
+  const post = getPostBySlug(slug);
+  if (!post || post.category !== category) return null;
+  return post;
+}
+
+/** The chapters immediately before/after this one, skipping missing or draft chapters. */
+export function getAdjacentChapters(
+  category: BlogCategorySlug,
+  chapter: number | undefined
+): { prev: Post | null; next: Post | null } {
+  if (chapter == null) return { prev: null, next: null };
+  const chapters = getGuideChapters(category);
+  const prev = chapters.filter((c) => c.chapter != null && c.chapter < chapter).pop() ?? null;
+  const next = chapters.find((c) => c.chapter != null && c.chapter > chapter) ?? null;
+  return { prev, next };
 }

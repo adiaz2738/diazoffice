@@ -21,6 +21,7 @@ export type PostFrontmatter = {
   timeline?: TimelineEntry[];
   timelinePlacement?: "top" | "bottom"; // defaults to "bottom" when timeline exists
   timelineStyle?: "simple" | "horizontal"; // defaults to "simple" when unset
+  chapter?: number; // position within a guide (see src/lib/guides.ts), unset for non-guide posts
 };
 
 export type Post = PostFrontmatter & {

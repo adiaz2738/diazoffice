@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getPostsByCategory } from "@/lib/posts";
+import { getGuideChapters } from "@/lib/posts";
 import { PostEntry } from "@/components/post-entry";
 import { videos } from "@/lib/videos-data";
 import { YoutubeEmbed } from "@/components/youtube-embed";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function BuyersGuidePage() {
-  const posts = getPostsByCategory("buyers-guide");
+  const posts = getGuideChapters("buyers-guide");
   const guideVideos = videos.filter((v) => v.category === "buyers-guide");
 
   return (
