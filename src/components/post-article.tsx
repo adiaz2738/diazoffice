@@ -5,6 +5,9 @@ import type { Post } from "@/types/post";
 import { blogCategories, siteConfig } from "@/lib/site-config";
 import { PostTimeline } from "@/components/post-timeline";
 import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
+import { TimelineBuyer } from "@/components/timeline-buyer";
+
+const mdxComponents = { TimelineBuyer };
 
 export type ChapterNav = {
   chapterNumber: number;
@@ -88,7 +91,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
         [&_a]:underline [&_a]:decoration-kw-red [&_a]:underline-offset-2 hover:[&_a]:text-kw-red
         [&>hr]:border-line [&>hr]:my-10"
       >
-        <MDXRemote source={post.content} />
+        <MDXRemote source={post.content} components={mdxComponents} />
       </div>
 
       {post.timeline && post.timeline.length > 0 && post.timelinePlacement !== "top" && (
