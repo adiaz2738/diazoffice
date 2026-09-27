@@ -2,11 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/posts";
+import { isGuideCategory } from "@/lib/guides";
 import { PostEntry } from "@/components/post-entry";
 import { SectionHeading } from "@/components/section-heading";
 
 export default function Home() {
-  const posts = getAllPosts().slice(0, 4);
+  const posts = getAllPosts()
+    .filter((p) => !isGuideCategory(p.category))
+    .slice(0, 4);
 
   return (
     <>
