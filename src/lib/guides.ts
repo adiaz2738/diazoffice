@@ -17,6 +17,12 @@ export const guides: GuideConfig[] = [
     hubTitle: "Buyer's Guide",
     plannedChapters: 8,
   },
+  {
+    category: "sellers-guide",
+    basePath: "/sellers-guide",
+    hubTitle: "Seller's Guide",
+    plannedChapters: 9,
+  },
 ];
 
 export function getGuideByCategory(category: string): GuideConfig | undefined {

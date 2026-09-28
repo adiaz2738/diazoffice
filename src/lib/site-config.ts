@@ -24,6 +24,7 @@ export type NavLink = {
 export const primaryNav: NavLink[] = [
   { label: "Blog", href: "/blog" },
   { label: "Buyer's Guide", href: "/buyers-guide" },
+  { label: "Seller's Guide", href: "/sellers-guide" },
   { label: "Neighborhoods", href: "/neighborhoods" },
   { label: "Videos", href: "/videos" },
   { label: "About", href: "/about" },
@@ -33,6 +34,7 @@ export const blogCategories = [
   { slug: "history", label: "History" },
   { slug: "real-estate", label: "Real Estate" },
   { slug: "buyers-guide", label: "Buyer's Guide" },
+  { slug: "sellers-guide", label: "Seller's Guide" },
 ] as const;
 
 export type BlogCategorySlug = (typeof blogCategories)[number]["slug"];
