@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import type { Post } from "@/types/post";
 import { blogCategories, siteConfig } from "@/lib/site-config";
 import { PostTimeline } from "@/components/post-timeline";
@@ -89,9 +90,17 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
         [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-5 [&>ol]:space-y-1
         [&>blockquote]:border-l-2 [&>blockquote]:border-kw-red [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-muted [&>blockquote]:mb-5
         [&_a]:underline [&_a]:decoration-kw-red [&_a]:underline-offset-2 hover:[&_a]:text-kw-red
-        [&>hr]:border-line [&>hr]:my-10"
+        [&>hr]:border-line [&>hr]:my-10
+        [&>table]:w-full [&>table]:border-collapse [&>table]:mb-6 [&>table]:text-sm
+        [&_th]:border-b [&_th]:border-line [&_th]:py-2 [&_th]:pr-4 [&_th]:text-left [&_th]:font-semibold
+        [&_td]:border-b [&_td]:border-line [&_td]:py-2 [&_td]:pr-4 [&_td]:text-ink/90
+        [&_img]:my-6 [&_img]:w-full [&_img]:h-auto"
       >
-        <MDXRemote source={post.content} components={mdxComponents} />
+        <MDXRemote
+          source={post.content}
+          components={mdxComponents}
+          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+        />
       </div>
 
       {post.timeline && post.timeline.length > 0 && post.timelinePlacement !== "top" && (

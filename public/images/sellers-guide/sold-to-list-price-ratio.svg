@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="t">Sold price to original list price, by days on market</title>
+  <desc id="d">Monterey County, year to date as of September 20, 2026. Homes that sold in 0 to 30 days sold for 99.7% of their original list price. 31 to 60 days: 94.5%. 61 to 90 days: 92.0%. Over 90 days: 87.8%. Data provided by MLSListings, Inc.</desc>
+  <text x="40" y="48" font-size="24" font-weight="600" fill="#111">Sold price as a % of original list price</text>
+  <text x="40" y="76" font-size="15" fill="#555">Monterey County, by days on market · Year to date as of 9/20/26</text>
+  <!-- baseline at y=420; scale: 80% -> 420, 100% -> 130 (14.5px per point) -->
+  <line x1="40" y1="420" x2="760" y2="420" stroke="#bbb" stroke-width="1"/>
+  <g font-size="22" font-weight="600" text-anchor="middle">
+    <rect x="70" y="134.35" width="130" height="285.65" fill="#ce011f"/>
+    <text x="135" y="122" fill="#111">99.7%</text>
+    <rect x="245" y="209.75" width="130" height="210.25" fill="#111"/>
+    <text x="310" y="197" fill="#111">94.5%</text>
+    <rect x="420" y="246" width="130" height="174" fill="#111"/>
+    <text x="485" y="234" fill="#111">92.0%</text>
+    <rect x="595" y="306.9" width="130" height="113.1" fill="#111"/>
+    <text x="660" y="295" fill="#111">87.8%</text>
+  </g>
+  <g font-size="16" fill="#333" text-anchor="middle">
+    <text x="135" y="446">0–30 days</text>
+    <text x="310" y="446">31–60 days</text>
+    <text x="485" y="446">61–90 days</text>
+    <text x="660" y="446">90+ days</text>
+  </g>
+  <text x="40" y="484" font-size="12" fill="#777">Axis starts at 80%. Data provided by MLSListings, Inc.</text>
+</svg>
