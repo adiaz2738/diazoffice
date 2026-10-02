@@ -1,5 +1,6 @@
 export type Lang = "en" | "es";
 export type LocalizedText = { en: string; es: string };
+export type Bilingual = LocalizedText;
 
 export type BuyerTimelineChapterLink = {
   href: string;

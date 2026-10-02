@@ -1,9 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import { SectionHeading } from "@/components/section-heading";
-import { cn } from "@/lib/cn";
 import {
   buyerTimelineSteps,
   phases,
@@ -11,8 +5,11 @@ import {
   renegotiationOutcomes,
   deadlineOutcomes,
   type Lang,
-  type BuyerTimelineStep,
 } from "@/lib/buyer-timeline-data";
+import {
+  VerticalStepTimeline,
+  type TimelineGroupData,
+} from "@/components/vertical-step-timeline";
 
 const ui = {
   eyebrow: { en: "Timeline", es: "Cronología" },
@@ -29,122 +26,35 @@ const ui = {
   },
 } as const;
 
-type Group = { phaseIndex: number; steps: BuyerTimelineStep[] };
-
-function groupByPhase(steps: BuyerTimelineStep[]): Group[] {
-  const groups: Group[] = [];
-  for (const step of steps) {
+function buildGroups(lang: Lang): TimelineGroupData[] {
+  const groups: TimelineGroupData[] = [];
+  for (const step of buyerTimelineSteps) {
+    const key = String(step.phase);
+    const label = phases[step.phase][lang];
+    const normalized = {
+      id: `buyer-${step.step}`,
+      number: step.step,
+      title: step.title[lang],
+      summary: step.bullets[lang][0],
+      bullets: step.bullets[lang],
+      chapterLink: step.chapterLink
+        ? { href: step.chapterLink.href, label: step.chapterLink.label[lang] }
+        : undefined,
+      expanded: step.step === 10 ? <Step10Detail lang={lang} /> : undefined,
+    };
     const last = groups[groups.length - 1];
-    if (last && last.phaseIndex === step.phase) {
-      last.steps.push(step);
+    if (last && last.key === key) {
+      last.steps.push(normalized);
     } else {
-      groups.push({ phaseIndex: step.phase, steps: [step] });
+      groups.push({ key, label, steps: [normalized] });
     }
   }
   return groups;
 }
 
 export function TimelineBuyer({ lang = "en" }: { lang?: Lang }) {
-  const [open, setOpen] = useState<Record<number, boolean>>({});
-  const groups = groupByPhase(buyerTimelineSteps);
-
-  function toggle(step: number) {
-    setOpen((prev) => ({ ...prev, [step]: !prev[step] }));
-  }
-
-  return (
-    <div className="mt-12">
-      <SectionHeading eyebrow={ui.eyebrow[lang]} title={ui.title[lang]} />
-
-      <div className="relative mt-8">
-        <div className="absolute left-5 top-2 bottom-2 w-px bg-line" aria-hidden />
-
-        {groups.map((group) => (
-          <div key={group.phaseIndex}>
-            <div className="relative py-3 pl-14">
-              <span
-                aria-hidden
-                className="absolute left-5 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-kw-red"
-              />
-              <p className="label-tag label-tag--accent">{phases[group.phaseIndex][lang]}</p>
-            </div>
-
-            {group.steps.map((step) => (
-              <StepRow
-                key={step.step}
-                step={step}
-                lang={lang}
-                isOpen={!!open[step.step]}
-                onToggle={() => toggle(step.step)}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function StepRow({
-  step,
-  lang,
-  isOpen,
-  onToggle,
-}: {
-  step: BuyerTimelineStep;
-  lang: Lang;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  const summary = step.bullets[lang][0];
-  const panelId = `buyer-timeline-step-${step.step}`;
-
-  return (
-    <div className="relative">
-      <span
-        aria-hidden
-        className={cn(
-          "absolute left-5 top-4 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border bg-paper text-sm font-semibold",
-          isOpen ? "border-kw-red text-kw-red" : "border-line text-ink"
-        )}
-      >
-        {step.step}
-      </span>
-
-      <button
-        type="button"
-        aria-expanded={isOpen}
-        aria-controls={panelId}
-        onClick={onToggle}
-        className="flex w-full items-start justify-between gap-4 border-b border-line py-4 pl-14 pr-1 text-left"
-      >
-        <span>
-          <span className="block font-semibold tracking-tight">{step.title[lang]}</span>
-          <span className="mt-1 block text-sm text-muted">{summary}</span>
-        </span>
-        <span aria-hidden className="shrink-0 text-lg text-muted">
-          {isOpen ? "−" : "+"}
-        </span>
-      </button>
-
-      <div id={panelId} hidden={!isOpen} className="pb-6 pl-14 pr-1 pt-1">
-        <ul className="list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-muted">
-          {step.bullets[lang].map((bullet, i) => (
-            <li key={i}>{bullet}</li>
-          ))}
-        </ul>
-        {step.chapterLink && (
-          <Link
-            href={step.chapterLink.href}
-            className="mt-3 inline-block text-xs text-kw-red underline underline-offset-2"
-          >
-            {step.chapterLink.label[lang]}
-          </Link>
-        )}
-        {step.step === 10 && <Step10Detail lang={lang} />}
-      </div>
-    </div>
-  );
+  const groups = buildGroups(lang);
+  return <VerticalStepTimeline eyebrow={ui.eyebrow[lang]} title={ui.title[lang]} groups={groups} />;
 }
 
 function Step10Detail({ lang }: { lang: Lang }) {

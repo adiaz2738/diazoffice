@@ -7,8 +7,9 @@ import { blogCategories, siteConfig } from "@/lib/site-config";
 import { PostTimeline } from "@/components/post-timeline";
 import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
 import { TimelineBuyer } from "@/components/timeline-buyer";
+import { SellerTimeline } from "@/components/timeline-seller";
 
-const mdxComponents = { TimelineBuyer };
+const mdxComponents = { TimelineBuyer, SellerTimeline };
 
 export type ChapterNav = {
   chapterNumber: number;
