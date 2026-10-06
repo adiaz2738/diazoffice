@@ -60,6 +60,15 @@ export function getAllSlugs(): string[] {
   return readAllSlugs();
 }
 
+/** True only for a real post with status "published" — unlike getPostBySlug, ignores the dev-mode draft bypass. */
+export function isPostPublished(slug: string): boolean {
+  try {
+    return readPost(slug).status === "published";
+  } catch {
+    return false;
+  }
+}
+
 /** A guide's chapters, sorted by chapter number, drafts already excluded outside dev. */
 export function getGuideChapters(category: BlogCategorySlug): Post[] {
   return sortChapters(getPostsByCategory(category));

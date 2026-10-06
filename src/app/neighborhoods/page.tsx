@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { neighborhoods } from "@/lib/neighborhoods-data";
 import { NeighborhoodMapLoader } from "@/components/neighborhood-map-loader";
+import { isPostPublished } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Neighborhoods",
@@ -32,7 +33,7 @@ export default function NeighborhoodsPage() {
           <div key={n.slug} className="border border-line p-6">
             <h2 className="text-lg font-semibold tracking-tight mb-2">{n.name}</h2>
             <p className="text-muted text-sm leading-relaxed mb-4">{n.blurb}</p>
-            {n.relatedPostSlugs.length > 0 ? (
+            {n.relatedPostSlugs.length > 0 && isPostPublished(n.relatedPostSlugs[0]) ? (
               <Link
                 href={`/blog/${n.relatedPostSlugs[0]}`}
                 className="text-sm font-medium hover:text-kw-red"
