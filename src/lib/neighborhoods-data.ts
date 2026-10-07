@@ -17,7 +17,7 @@ export const neighborhoods: Neighborhood[] = [
     lng: -121.9233,
     blurb:
       "Fairy-tale cottages, no street addresses, and an arts colony origin story that shaped the town's building code.",
-    relatedPostSlugs: [],
+    relatedPostSlugs: ["carmel-by-the-sea-history"],
   },
   {
     slug: "monterey",

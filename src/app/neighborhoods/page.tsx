@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { neighborhoods } from "@/lib/neighborhoods-data";
 import { NeighborhoodMapLoader } from "@/components/neighborhood-map-loader";
-import { isPostPublished } from "@/lib/posts";
+import { getPostBySlug } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Neighborhoods",
@@ -29,22 +29,30 @@ export default function NeighborhoodsPage() {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {neighborhoods.map((n) => (
-          <div key={n.slug} className="border border-line p-6">
-            <h2 className="text-lg font-semibold tracking-tight mb-2">{n.name}</h2>
-            <p className="text-muted text-sm leading-relaxed mb-4">{n.blurb}</p>
-            {n.relatedPostSlugs.length > 0 && isPostPublished(n.relatedPostSlugs[0]) ? (
-              <Link
-                href={`/blog/${n.relatedPostSlugs[0]}`}
-                className="text-sm font-medium hover:text-kw-red"
-              >
-                Read the history →
-              </Link>
-            ) : (
-              <span className="text-sm text-muted italic">History post coming soon</span>
-            )}
-          </div>
-        ))}
+        {neighborhoods.map((n) => {
+          const post = n.relatedPostSlugs.length > 0 ? getPostBySlug(n.relatedPostSlugs[0]) : null;
+          return (
+            <div key={n.slug} className="border border-line p-6">
+              <h2 className="text-lg font-semibold tracking-tight mb-2">{n.name}</h2>
+              <p className="text-muted text-sm leading-relaxed mb-4">{n.blurb}</p>
+              {post ? (
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`/blog/${n.relatedPostSlugs[0]}`}
+                    className="text-sm font-medium hover:text-kw-red"
+                  >
+                    Read the history →
+                  </Link>
+                  {post.status === "draft" && (
+                    <span className="label-tag label-tag--accent">Draft</span>
+                  )}
+                </div>
+              ) : (
+                <span className="text-sm text-muted italic">History post coming soon</span>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
