@@ -83,10 +83,10 @@ body {
   background: var(--color-ink);
 }
 
-/* Desaturate the OSM tiles so the basemap matches the site's black/paper palette,
-   without affecting markers or popups. */
+/* Mute (not fully desaturate) the OSM tiles so the basemap keeps some color
+   while staying soft, without affecting markers or popups. */
 .leaflet-tile-pane {
-  filter: grayscale(1) contrast(0.9) brightness(1.05);
+  filter: saturate(0.6) contrast(0.95) brightness(1.03);
 }
 
 .leaflet-popup-content a {
