@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import Link from "next/link";
-import type { Neighborhood } from "@/lib/neighborhoods-data";
+import type { NeighborhoodWithHistory } from "@/lib/neighborhoods-data";
 
 // Custom marker: a simple ink-ringed dot in the KW red, styled with plain CSS
 // so we don't need to bundle Leaflet's default marker image assets.
@@ -23,7 +23,7 @@ const markerIcon = L.divIcon({
   popupAnchor: [0, -10],
 });
 
-export function NeighborhoodMap({ neighborhoods }: { neighborhoods: Neighborhood[] }) {
+export function NeighborhoodMap({ neighborhoods }: { neighborhoods: NeighborhoodWithHistory[] }) {
   // Rough centroid over Monterey County / the coast.
   const center: [number, number] = [36.68, -121.85];
 
@@ -44,8 +44,8 @@ export function NeighborhoodMap({ neighborhoods }: { neighborhoods: Neighborhood
           <Popup>
             <p className="font-semibold mb-1">{n.name}</p>
             <p className="text-sm mb-2">{n.blurb}</p>
-            {n.relatedPostSlugs.length > 0 && (
-              <Link href={`/blog/${n.relatedPostSlugs[0]}`}>Read the history →</Link>
+            {n.historySlug && (
+              <Link href={`/blog/${n.historySlug}`}>Read the history →</Link>
             )}
           </Popup>
         </Marker>

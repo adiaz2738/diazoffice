@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { neighborhoods } from "@/lib/neighborhoods-data";
 import { NeighborhoodMapLoader } from "@/components/neighborhood-map-loader";
-import { getPostBySlug } from "@/lib/posts";
+import { getPostByNeighborhood } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Neighborhoods",
@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default function NeighborhoodsPage() {
+  const cards = neighborhoods.map((n) => ({ ...n, post: getPostByNeighborhood(n.slug) }));
+  const neighborhoodsWithHistory = cards.map(({ post, ...n }) => ({
+    ...n,
+    historySlug: post?.slug,
+  }));
+
   return (
     <div>
       <div className="mx-auto max-w-6xl px-5 sm:px-8 pt-16 sm:pt-20 pb-10">
@@ -25,12 +31,11 @@ export default function NeighborhoodsPage() {
       </div>
 
       <div className="h-[420px] sm:h-[520px] border-y border-line">
-        <NeighborhoodMapLoader neighborhoods={neighborhoods} />
+        <NeighborhoodMapLoader neighborhoods={neighborhoodsWithHistory} />
       </div>
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {neighborhoods.map((n) => {
-          const post = n.relatedPostSlugs.length > 0 ? getPostBySlug(n.relatedPostSlugs[0]) : null;
+        {cards.map(({ post, ...n }) => {
           return (
             <div key={n.slug} className="border border-line p-6">
               <h2 className="text-lg font-semibold tracking-tight mb-2">{n.name}</h2>
@@ -38,7 +43,7 @@ export default function NeighborhoodsPage() {
               {post ? (
                 <div className="flex items-center gap-2">
                   <Link
-                    href={`/blog/${n.relatedPostSlugs[0]}`}
+                    href={`/blog/${post.slug}`}
                     className="text-sm font-medium hover:text-kw-red"
                   >
                     Read the history →

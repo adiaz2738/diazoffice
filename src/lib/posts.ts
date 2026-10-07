@@ -60,6 +60,11 @@ export function getAllSlugs(): string[] {
   return readAllSlugs();
 }
 
+/** The post whose frontmatter `neighborhood` matches, respecting the usual dev/production draft rules. */
+export function getPostByNeighborhood(neighborhoodSlug: string): Post | null {
+  return getAllPosts().find((p) => p.neighborhood === neighborhoodSlug) ?? null;
+}
+
 /** A guide's chapters, sorted by chapter number, drafts already excluded outside dev. */
 export function getGuideChapters(category: BlogCategorySlug): Post[] {
   return sortChapters(getPostsByCategory(category));

@@ -4,11 +4,17 @@ export type Neighborhood = {
   lat: number;
   lng: number;
   blurb: string;
-  relatedPostSlugs: string[];
 };
+
+// Neighborhood plus the slug of its matching history post (if any), resolved
+// server-side with getPostByNeighborhood so client map components don't need
+// filesystem access.
+export type NeighborhoodWithHistory = Neighborhood & { historySlug?: string };
 
 // Starter set covering Monterey County. Add more as you write the history posts
 // that back them — keep blurb short, the depth lives in the linked post.
+// Each card's "Read the history" link is resolved automatically by matching
+// this slug against a post's frontmatter `neighborhood` field.
 export const neighborhoods: Neighborhood[] = [
   {
     slug: "carmel-by-the-sea",
@@ -17,7 +23,6 @@ export const neighborhoods: Neighborhood[] = [
     lng: -121.9233,
     blurb:
       "Fairy-tale cottages, no street addresses, and an arts colony origin story that shaped the town's building code.",
-    relatedPostSlugs: ["carmel-by-the-sea-history"],
   },
   {
     slug: "monterey",
@@ -26,7 +31,6 @@ export const neighborhoods: Neighborhood[] = [
     lng: -121.8947,
     blurb:
       "Once the sardine capital of the world. Cannery Row is named literally, not romantically.",
-    relatedPostSlugs: ["stokes-adobe-monterey"],
   },
   {
     slug: "pacific-grove",
@@ -34,7 +38,6 @@ export const neighborhoods: Neighborhood[] = [
     lat: 36.6177,
     lng: -121.9166,
     blurb: "Butterfly Town USA, and the Methodist retreat that built it on a grid.",
-    relatedPostSlugs: [],
   },
   {
     slug: "moss-landing",
@@ -43,7 +46,6 @@ export const neighborhoods: Neighborhood[] = [
     lng: -121.7885,
     blurb:
       "A working harbor town with a power plant skyline, and a quieter story about why parts of it sit empty.",
-    relatedPostSlugs: ["why-moss-landing-is-empty"],
   },
   {
     slug: "salinas",
@@ -52,6 +54,5 @@ export const neighborhoods: Neighborhood[] = [
     lng: -121.6555,
     blurb:
       "Salad Bowl of the World, and Ohlone land long before that. The valley's agricultural story starts here.",
-    relatedPostSlugs: ["ohlone-salinas-valley"],
   },
 ];

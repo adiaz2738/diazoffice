@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { Neighborhood } from "@/lib/neighborhoods-data";
+import type { NeighborhoodWithHistory } from "@/lib/neighborhoods-data";
 import "leaflet/dist/leaflet.css";
 
 const NeighborhoodMap = dynamic(
@@ -16,6 +16,10 @@ const NeighborhoodMap = dynamic(
   }
 );
 
-export function NeighborhoodMapLoader({ neighborhoods }: { neighborhoods: Neighborhood[] }) {
+export function NeighborhoodMapLoader({
+  neighborhoods,
+}: {
+  neighborhoods: NeighborhoodWithHistory[];
+}) {
   return <NeighborhoodMap neighborhoods={neighborhoods} />;
 }
