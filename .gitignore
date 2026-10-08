@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# photo pipeline: raw originals never get committed, only the processed
+# webp output under public/images/photos/ and src/data/photos.json
+/photo-inbox/

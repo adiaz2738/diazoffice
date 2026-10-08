@@ -8,8 +8,9 @@ import { PostTimeline } from "@/components/post-timeline";
 import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
 import { TimelineBuyer } from "@/components/timeline-buyer";
 import { SellerTimeline } from "@/components/timeline-seller";
+import { Photo } from "@/components/photo";
 
-const mdxComponents = { TimelineBuyer, SellerTimeline };
+const mdxComponents = { TimelineBuyer, SellerTimeline, Photo };
 
 export type ChapterNav = {
   chapterNumber: number;
