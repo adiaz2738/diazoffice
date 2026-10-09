@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "photos": "node scripts/process-photos.mjs"
+    "photos": "node scripts/process-photos.mjs",
+    "photos:reset": "node scripts/reset-photos.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",

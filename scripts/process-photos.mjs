@@ -28,6 +28,7 @@ const INBOX_DIR = path.join(ROOT, "photo-inbox");
 const DONE_DIR = path.join(INBOX_DIR, "done");
 const PHOTOS_DIR = path.join(ROOT, "public", "images", "photos");
 const DATA_FILE = path.join(ROOT, "src", "data", "photos.json");
+const RUN_LOG_FILE = path.join(INBOX_DIR, ".last-run.json");
 
 const EXTENSIONS = new Set([".jpg", ".jpeg", ".heic", ".png"]);
 const MAX_EDGE = 1800;
@@ -158,7 +159,10 @@ async function processFile(filePath, sequenceCounters, folderTown) {
   fs.renameSync(filePath, path.join(DONE_DIR, base));
 
   console.log(`  -> ${town}/${outputName}`);
-  return { file: `${town}/${outputName}`, town, date, alt: "", caption: "" };
+  return {
+    record: { file: `${town}/${outputName}`, town, date, alt: "", caption: "" },
+    runEntry: { originalBase: base, outputFile: `${town}/${outputName}` },
+  };
 }
 
 const isImage = (name) => EXTENSIONS.has(path.extname(name).toLowerCase());
@@ -203,12 +207,14 @@ async function main() {
 
   const photos = loadPhotosData();
   const sequenceCounters = {};
+  const runLog = [];
   let processed = 0;
 
   for (const { filePath, folderTown } of entries) {
     try {
-      const record = await processFile(filePath, sequenceCounters, folderTown);
+      const { record, runEntry } = await processFile(filePath, sequenceCounters, folderTown);
       photos.push(record);
+      runLog.push(runEntry);
       processed++;
     } catch (err) {
       console.error(`  Failed to process ${path.basename(filePath)}: ${err.message}`);
@@ -216,7 +222,11 @@ async function main() {
   }
 
   savePhotosData(photos);
+  fs.writeFileSync(RUN_LOG_FILE, JSON.stringify(runLog, null, 2) + "\n");
   console.log(`\nDone. Processed ${processed} of ${entries.length} image(s).`);
+  if (processed > 0) {
+    console.log("Run `npm run photos:reset` to undo this run, if needed.");
+  }
 }
 
 main();
