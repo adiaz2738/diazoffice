@@ -6,7 +6,10 @@
 //   - a file inside a town-named subfolder (e.g. photo-inbox/pacific-grove/)
 //     uses that folder name as the town directly, skipping GPS matching
 //   - converts to WebP, capped at 1800px on the long edge, metadata stripped
-//   - writes it to public/images/photos/<town>/<town>-<date>-<nnn>.webp
+//   - writes it to public/images/photos/<town>/, named either
+//     <town>-<descriptive-name>.webp (if the original filename is descriptive,
+//     not a camera default like IMG_1234/DSC_0001/PXL_.../a bare date) or
+//     <town>-<YYYY-MM-DD>-<nnn>.webp otherwise
 //   - moves the original into photo-inbox/done/
 //   - appends a record to src/data/photos.json
 //
@@ -65,6 +68,40 @@ function nextSequence(townDir, town, date) {
   return max + 1;
 }
 
+// Camera-default filename patterns: IMG_1234, DSC_0001, PXL_20231225_123456,
+// and bare date-only names (YYYYMMDD or YYYY-MM-DD, optionally with a
+// trailing counter). Anything else counts as a human-given, descriptive name.
+const CAMERA_DEFAULT_PATTERNS = [
+  /^img[-_]?\d+$/,
+  /^dsc[-_]?\d+$/,
+  /^pxl[-_]?\d+([-_]\d+)?$/,
+  /^\d{8}([-_]\d+)?$/,
+  /^\d{4}[-_]\d{2}[-_]\d{2}([-_]\d+)?$/,
+];
+
+function isDescriptiveName(base) {
+  const lower = base.toLowerCase();
+  return !CAMERA_DEFAULT_PATTERNS.some((re) => re.test(lower));
+}
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** `<town>-<slug>.webp`, or `<town>-<slug>-2.webp` etc. if that name is already taken. */
+function uniqueDescriptiveName(townDir, town, slug) {
+  let outputName = `${town}-${slug}.webp`;
+  let n = 2;
+  while (fs.existsSync(path.join(townDir, outputName))) {
+    outputName = `${town}-${slug}-${n}.webp`;
+    n++;
+  }
+  return outputName;
+}
+
 async function processFile(filePath, sequenceCounters, folderTown) {
   const base = path.basename(filePath);
   console.log(`Processing ${base}${folderTown ? ` (folder: ${folderTown})` : ""}...`);
@@ -96,12 +133,18 @@ async function processFile(filePath, sequenceCounters, folderTown) {
   const townDir = path.join(PHOTOS_DIR, town);
   fs.mkdirSync(townDir, { recursive: true });
 
-  const counterKey = `${town}-${date}`;
-  if (!(counterKey in sequenceCounters)) {
-    sequenceCounters[counterKey] = nextSequence(townDir, town, date);
+  const baseName = base.slice(0, base.length - path.extname(base).length);
+  let outputName;
+  if (isDescriptiveName(baseName)) {
+    outputName = uniqueDescriptiveName(townDir, town, slugify(baseName));
+  } else {
+    const counterKey = `${town}-${date}`;
+    if (!(counterKey in sequenceCounters)) {
+      sequenceCounters[counterKey] = nextSequence(townDir, town, date);
+    }
+    const seq = sequenceCounters[counterKey]++;
+    outputName = `${town}-${date}-${String(seq).padStart(3, "0")}.webp`;
   }
-  const seq = sequenceCounters[counterKey]++;
-  const outputName = `${town}-${date}-${String(seq).padStart(3, "0")}.webp`;
   const outputPath = path.join(townDir, outputName);
 
   await sharp(filePath, { failOn: "none" })

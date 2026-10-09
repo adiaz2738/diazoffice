@@ -40,6 +40,22 @@ export const neighborhoods: Neighborhood[] = [
     blurb: "Butterfly Town USA, and the Methodist retreat that built it on a grid.",
   },
   {
+    slug: "seaside",
+    name: "Seaside",
+    lat: 36.6111,
+    lng: -121.85,
+    blurb:
+      "A doctor's 1880s town plan, an Army base next door, and a city still growing on former Fort Ord land.",
+  },
+  {
+    slug: "marina",
+    name: "Marina",
+    lat: 36.6844,
+    lng: -121.8025,
+    blurb:
+      "A small town at the north end of the bay that grew up beside Fort Ord, and kept growing after it closed.",
+  },
+  {
     slug: "moss-landing",
     name: "Moss Landing",
     lat: 36.8038,
