@@ -9,8 +9,9 @@ import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
 import { TimelineBuyer } from "@/components/timeline-buyer";
 import { SellerTimeline } from "@/components/timeline-seller";
 import { Photo } from "@/components/photo";
+import { SeasideMapLoader } from "@/components/seaside-map-loader";
 
-const mdxComponents = { TimelineBuyer, SellerTimeline, Photo };
+const mdxComponents = { TimelineBuyer, SellerTimeline, Photo, SeasideMap: SeasideMapLoader };
 
 export type ChapterNav = {
   chapterNumber: number;
