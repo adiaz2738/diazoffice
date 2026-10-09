@@ -31,6 +31,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
     headline: post.title,
     description: post.seoDescription || post.excerpt,
     datePublished: post.date,
+    ...(post.coverImage && { image: new URL(post.coverImage, siteConfig.url).href }),
     author: {
       "@type": "Person",
       name: siteConfig.name,

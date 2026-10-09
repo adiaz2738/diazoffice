@@ -11,6 +11,8 @@ const inter = Inter({
   display: "swap",
 });
 
+const ogImageAlt = "Diaz Office, Monterey County real estate";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -25,11 +27,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: ogImageAlt }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: ogImageAlt }],
   },
   icons: {
     icon: [
