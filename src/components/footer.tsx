@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { primaryNav, siteConfig } from "@/lib/site-config";
-import { NewsletterForm } from "@/components/newsletter-form";
 
 export function Footer() {
   return (
     <footer className="border-t border-line mt-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 py-14 grid gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 py-14 grid gap-12 md:grid-cols-2">
         <div>
           <Image
             src="/diazoffice-logo.svg"
@@ -47,14 +46,6 @@ export function Footer() {
             FAQ
           </Link>
         </nav>
-
-        <div>
-          <span className="label-tag mb-2 block">Notes from the archive</span>
-          <p className="text-sm text-muted mb-3 max-w-xs">
-            New posts on Monterey County history and real estate, roughly twice a month. No spam.
-          </p>
-          <NewsletterForm />
-        </div>
       </div>
 
       <div className="border-t border-line">

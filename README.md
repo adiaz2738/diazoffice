@@ -1,6 +1,6 @@
 # Anthony Diaz Realty
 
-Monterey County real estate + local history blog. Next.js 16, Tailwind v4, MDX blog posts, Supabase (contact form + newsletter), deployed on Vercel.
+Monterey County real estate + local history blog. Next.js 16, Tailwind v4, MDX blog posts, Supabase (contact form), deployed on Vercel.
 
 - **Start here:** `context.md` — full project context, goals, stack, design system, roadmap.
 - **Getting set up:** `setup.md` — git, GitHub, Supabase, Vercel, env vars, custom domain, step by step.

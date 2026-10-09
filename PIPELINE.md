@@ -15,8 +15,8 @@ Nothing else matters until this is done. Skip everything below.
 
 ## Before flipping the site live
 
-- [ ] Pick Neon or Supabase, wire up contact_submissions + newsletter_subscribers,
-      confirm both forms actually save a row (test locally first)
+- [ ] Pick Neon or Supabase, wire up contact_submissions,
+      confirm the contact form actually saves a row (test locally first)
 - [ ] Push to GitHub if not already, connect repo to Vercel, add env vars, deploy
 - [ ] Point diazoffice.com at the Vercel deployment
 - [ ] Add a real favicon (currently missing)
@@ -34,6 +34,9 @@ Nothing else matters until this is done. Skip everything below.
 
 ## Someday, not blocking anything
 
+- [ ] Newsletter signup was removed from the site (newsletters are handled
+      through Keller Williams Command). Decide how signups connect to Command
+      before adding any signup form back.
 - [ ] Finalize hero photo treatment (wash opacity, grayscale or not)
 - [ ] Fill in Instagram/Facebook links in site-config.ts
 - [ ] Submit sitemap to Google Search Console (do this after launch, not before)

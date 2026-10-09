@@ -29,7 +29,7 @@ cp .env.example .env.local
 ```
 
 Leave `.env.local` empty for now — you'll fill in Supabase values in step 4. The
-site runs fine without them; only the contact form and newsletter signup need
+site runs fine without them; only the contact form needs
 Supabase to actually work.
 
 Confirm it runs locally:
@@ -89,7 +89,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-Restart `npm run dev` and test the contact form and newsletter signup at
+Restart `npm run dev` and test the contact form at
 `localhost:3000/contact`. Check **Table Editor** in Supabase to confirm the row
 showed up.
 
