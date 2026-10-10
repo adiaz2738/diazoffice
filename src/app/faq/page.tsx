@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { faqs } from "@/lib/faq-data";
+import { faqs, stripMarkdownLinks } from "@/lib/faq-data";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -8,21 +8,29 @@ export const metadata: Metadata = {
     "Answers to common questions about buying and selling real estate in Monterey County with Anthony Diaz.",
 };
 
-const INTERNAL_PATHS = ["/buyers-guide", "/contact", "/blog", "/neighborhoods", "/listings", "/about"];
-
+// Answers may contain markdown links like [text](/path). Render them as internal links.
 function renderAnswer(answer: string) {
-  const pattern = new RegExp(`(${INTERNAL_PATHS.join("|")})`, "g");
-  const parts = answer.split(pattern);
+  const parts: React.ReactNode[] = [];
+  const pattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let match: RegExpExecArray | null;
 
-  return parts.map((part, i) =>
-    INTERNAL_PATHS.includes(part) ? (
-      <Link key={i} href={part} className="underline decoration-kw-red underline-offset-2 hover:text-kw-red">
-        {part}
+  while ((match = pattern.exec(answer)) !== null) {
+    if (match.index > last) parts.push(answer.slice(last, match.index));
+    parts.push(
+      <Link
+        key={match.index}
+        href={match[2]}
+        className="underline decoration-kw-red underline-offset-2 hover:text-kw-red"
+      >
+        {match[1]}
       </Link>
-    ) : (
-      <span key={i}>{part}</span>
-    )
-  );
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < answer.length) parts.push(answer.slice(last));
+
+  return parts;
 }
 
 export default function FaqPage() {
@@ -34,7 +42,7 @@ export default function FaqPage() {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: stripMarkdownLinks(faq.answer),
       },
     })),
   };
