@@ -45,6 +45,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Existing YouTube link stays in; siteConfig.sameAs adds the rest. Deduped, omitted when empty.
+const sameAs = [...new Set([siteConfig.social.youtube, ...siteConfig.sameAs].filter(Boolean))];
+
 const realEstateAgentSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
@@ -52,9 +55,13 @@ const realEstateAgentSchema = {
   telephone: siteConfig.phone,
   email: siteConfig.email,
   url: siteConfig.url,
-  areaServed: ["Monterey County, CA"],
+  areaServed: ["Monterey County", "Santa Cruz County", "San Benito County"].map((name) => ({
+    "@type": "AdministrativeArea",
+    name: `${name}, California`,
+  })),
+  knowsLanguage: ["English", "Spanish"],
   // address: TODO — add a PostalAddress object here if/when an office address should be published.
-  sameAs: [siteConfig.social.youtube].filter(Boolean),
+  ...(sameAs.length > 0 && { sameAs }),
 };
 
 export default function RootLayout({

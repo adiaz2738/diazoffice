@@ -10,6 +10,10 @@ export const siteConfig = {
   dre: "DRE# 02121333",
   phone: "(831) 383-3112",
   email: "anthony.diaz@mphtre.com",
+  // Profile URLs for the RealEstateAgent JSON-LD "sameAs". Paste in your own: Google Business
+  // Profile, Zillow, Realtor.com, Keller Williams agent page, YouTube, LinkedIn, Facebook,
+  // Instagram. Left empty on purpose, sameAs is omitted from the schema until this has entries.
+  sameAs: [] as string[],
   social: {
     youtube: "https://youtube.com/@anthonydiaz6101",
     instagram: "", // fill in
