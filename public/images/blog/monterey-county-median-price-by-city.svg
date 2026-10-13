@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 610" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">Median sold price by city, Monterey County</title>
+<desc id="d">Median sold price of homes sold in the past six months, by city, Monterey County, as of October 2026. Pebble Beach: $2,865,000; Carmel: $2,525,000; Carmel Valley: $1,600,000; Pacific Grove: $1,427,500; Monterey: $1,168,750; Marina: $939,500; East Garrison: $899,999; Del Rey Oaks: $877,500; Prunedale: $860,500; Castroville: $803,000; Seaside: $801,001; Salinas: $791,500; Gonzales: $741,000; Soledad: $690,000; Greenfield: $595,000; King City: $552,953. Data provided by MLSListings, Inc.</desc>
+<text x="20" y="40" font-size="22" font-weight="600" fill="#111">Median sold price by city, Monterey County</text>
+<text x="20" y="64" font-size="14" fill="#555">Homes sold in the past 6 months · As of October 2026</text>
+<text x="140" y="99" font-size="14" fill="#333" text-anchor="end">Pebble Beach</text>
+<rect x="150" y="85" width="515.7" height="20" fill="#111"/>
+<text x="673.7" y="99" font-size="13" fill="#111">$2.87M</text>
+<text x="140" y="129" font-size="14" fill="#333" text-anchor="end">Carmel</text>
+<rect x="150" y="115" width="454.5" height="20" fill="#111"/>
+<text x="612.5" y="129" font-size="13" fill="#111">$2.52M</text>
+<text x="140" y="159" font-size="14" fill="#333" text-anchor="end">Carmel Valley</text>
+<rect x="150" y="145" width="288.0" height="20" fill="#111"/>
+<text x="446.0" y="159" font-size="13" fill="#111">$1.60M</text>
+<text x="140" y="189" font-size="14" fill="#333" text-anchor="end">Pacific Grove</text>
+<rect x="150" y="175" width="256.9" height="20" fill="#111"/>
+<text x="414.9" y="189" font-size="13" fill="#111">$1.43M</text>
+<text x="140" y="219" font-size="14" fill="#333" text-anchor="end">Monterey</text>
+<rect x="150" y="205" width="210.4" height="20" fill="#111"/>
+<text x="368.4" y="219" font-size="13" fill="#111">$1.17M</text>
+<text x="140" y="249" font-size="14" fill="#333" text-anchor="end">Marina</text>
+<rect x="150" y="235" width="169.1" height="20" fill="#111"/>
+<text x="327.1" y="249" font-size="13" fill="#111">$940K</text>
+<text x="140" y="279" font-size="14" fill="#333" text-anchor="end">East Garrison</text>
+<rect x="150" y="265" width="162.0" height="20" fill="#111"/>
+<text x="320.0" y="279" font-size="13" fill="#111">$900K</text>
+<text x="140" y="309" font-size="14" fill="#333" text-anchor="end">Del Rey Oaks</text>
+<rect x="150" y="295" width="158.0" height="20" fill="#111"/>
+<text x="316.0" y="309" font-size="13" fill="#111">$878K</text>
+<text x="140" y="339" font-size="14" fill="#333" text-anchor="end">Prunedale</text>
+<rect x="150" y="325" width="154.9" height="20" fill="#111"/>
+<text x="312.9" y="339" font-size="13" fill="#111">$860K</text>
+<text x="140" y="369" font-size="14" fill="#333" text-anchor="end">Castroville</text>
+<rect x="150" y="355" width="144.5" height="20" fill="#111"/>
+<text x="302.5" y="369" font-size="13" fill="#111">$803K</text>
+<text x="140" y="399" font-size="14" fill="#333" text-anchor="end">Seaside</text>
+<rect x="150" y="385" width="144.2" height="20" fill="#111"/>
+<text x="302.2" y="399" font-size="13" fill="#111">$801K</text>
+<text x="140" y="429" font-size="14" fill="#333" text-anchor="end">Salinas</text>
+<rect x="150" y="415" width="142.5" height="20" fill="#111"/>
+<text x="300.5" y="429" font-size="13" fill="#111">$792K</text>
+<text x="140" y="459" font-size="14" fill="#333" text-anchor="end">Gonzales</text>
+<rect x="150" y="445" width="133.4" height="20" fill="#111"/>
+<text x="291.4" y="459" font-size="13" fill="#111">$741K</text>
+<text x="140" y="489" font-size="14" fill="#333" text-anchor="end">Soledad</text>
+<rect x="150" y="475" width="124.2" height="20" fill="#111"/>
+<text x="282.2" y="489" font-size="13" fill="#111">$690K</text>
+<text x="140" y="519" font-size="14" fill="#333" text-anchor="end">Greenfield</text>
+<rect x="150" y="505" width="107.1" height="20" fill="#111"/>
+<text x="265.1" y="519" font-size="13" fill="#111">$595K</text>
+<text x="140" y="549" font-size="14" fill="#333" text-anchor="end">King City</text>
+<rect x="150" y="535" width="99.5" height="20" fill="#111"/>
+<text x="257.5" y="549" font-size="13" fill="#111">$553K</text>
+<text x="20" y="592" font-size="12" fill="#777">Data provided by MLSListings, Inc. Areas with very few sales not shown.</text>
+</svg>

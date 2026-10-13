@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" role="img" aria-labelledby="t2 d2" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t2">Active listings by month, Monterey County, 2021 to 2026</title>
+<desc id="d2">Number of active residential listings in Monterey County by month. 2021: Jan 462, Feb 418, Mar 406, Apr 426, May 433, Jun 488, Jul 472, Aug 482, Sep 477, Oct 457, Nov 381, Dec 308; 2022: Jan 321, Feb 321, Mar 335, Apr 402, May 475, Jun 536, Jul 572, Aug 589, Sep 596, Oct 560, Nov 535, Dec 458; 2023: Jan 432, Feb 403, Mar 393, Apr 386, May 413, Jun 461, Jul 454, Aug 494, Sep 492, Oct 490, Nov 483, Dec 411; 2024: Jan 415, Feb 413, Mar 427, Apr 482, May 537, Jun 575, Jul 627, Aug 652, Sep 660, Oct 624, Nov 590, Dec 507; 2025: Jan 535, Feb 536, Mar 540, Apr 621, May 666, Jun 683, Jul 713, Aug 735, Sep 738, Oct 668, Nov 627, Dec 552; 2026: Jan 526, Feb 552, Mar 561, Apr 625, May 659, Jun 697, Jul 705, Aug 706, Sep 673. Data provided by MLSListings, Inc.</desc>
+<text x="20" y="40" font-size="22" font-weight="600" fill="#111">Homes for sale in Monterey County, by month</text>
+<text x="20" y="64" font-size="14" fill="#555">Active residential listings, 2021 to 2026</text>
+<line x1="60" y1="370.9" x2="710" y2="370.9" stroke="#e3e3e3"/>
+<text x="52" y="374.9" font-size="12" fill="#777" text-anchor="end">300</text>
+<line x1="60" y1="312.7" x2="710" y2="312.7" stroke="#e3e3e3"/>
+<text x="52" y="316.7" font-size="12" fill="#777" text-anchor="end">400</text>
+<line x1="60" y1="254.5" x2="710" y2="254.5" stroke="#e3e3e3"/>
+<text x="52" y="258.5" font-size="12" fill="#777" text-anchor="end">500</text>
+<line x1="60" y1="196.4" x2="710" y2="196.4" stroke="#e3e3e3"/>
+<text x="52" y="200.4" font-size="12" fill="#777" text-anchor="end">600</text>
+<line x1="60" y1="138.2" x2="710" y2="138.2" stroke="#e3e3e3"/>
+<text x="52" y="142.2" font-size="12" fill="#777" text-anchor="end">700</text>
+<line x1="60" y1="80.0" x2="710" y2="80.0" stroke="#e3e3e3"/>
+<text x="52" y="84.0" font-size="12" fill="#777" text-anchor="end">800</text>
+<text x="60.0" y="420" font-size="12" fill="#777" text-anchor="middle">Jan</text>
+<text x="119.1" y="420" font-size="12" fill="#777" text-anchor="middle">Feb</text>
+<text x="178.2" y="420" font-size="12" fill="#777" text-anchor="middle">Mar</text>
+<text x="237.3" y="420" font-size="12" fill="#777" text-anchor="middle">Apr</text>
+<text x="296.4" y="420" font-size="12" fill="#777" text-anchor="middle">May</text>
+<text x="355.5" y="420" font-size="12" fill="#777" text-anchor="middle">Jun</text>
+<text x="414.5" y="420" font-size="12" fill="#777" text-anchor="middle">Jul</text>
+<text x="473.6" y="420" font-size="12" fill="#777" text-anchor="middle">Aug</text>
+<text x="532.7" y="420" font-size="12" fill="#777" text-anchor="middle">Sep</text>
+<text x="591.8" y="420" font-size="12" fill="#777" text-anchor="middle">Oct</text>
+<text x="650.9" y="420" font-size="12" fill="#777" text-anchor="middle">Nov</text>
+<text x="710.0" y="420" font-size="12" fill="#777" text-anchor="middle">Dec</text>
+<polyline fill="none" stroke="#c9c9c9" stroke-width="1.75" points="60.0,276.7 119.1,302.3 178.2,309.2 237.3,297.6 296.4,293.5 355.5,261.5 414.5,270.8 473.6,265.0 532.7,267.9 591.8,279.6 650.9,323.8 710.0,366.3"/>
+<text x="716.0" y="370.3" font-size="12" font-weight="400" fill="#999">2021</text>
+<polyline fill="none" stroke="#b0b0b0" stroke-width="1.75" points="60.0,358.7 119.1,358.7 178.2,350.5 237.3,311.6 296.4,269.1 355.5,233.6 414.5,212.7 473.6,202.8 532.7,198.7 591.8,219.6 650.9,234.2 710.0,279.0"/>
+<text x="716.0" y="283.0" font-size="12" font-weight="400" fill="#b0b0b0">2022</text>
+<polyline fill="none" stroke="#949494" stroke-width="1.75" points="60.0,294.1 119.1,311.0 178.2,316.8 237.3,320.9 296.4,305.2 355.5,277.2 414.5,281.3 473.6,258.0 532.7,259.2 591.8,260.4 650.9,264.4 710.0,306.3"/>
+<text x="716.0" y="310.3" font-size="12" font-weight="400" fill="#949494">2023</text>
+<polyline fill="none" stroke="#6e6e6e" stroke-width="1.75" points="60.0,304.0 119.1,305.2 178.2,297.0 237.3,265.0 296.4,233.0 355.5,210.9 414.5,180.7 473.6,166.1 532.7,161.5 591.8,182.4 650.9,202.2 710.0,250.5"/>
+<text x="716.0" y="254.5" font-size="12" font-weight="400" fill="#6e6e6e">2024</text>
+<polyline fill="none" stroke="#333333" stroke-width="1.75" points="60.0,234.2 119.1,233.6 178.2,231.3 237.3,184.1 296.4,158.0 355.5,148.1 414.5,130.6 473.6,117.8 532.7,116.1 591.8,156.8 650.9,180.7 710.0,224.3"/>
+<text x="716.0" y="228.3" font-size="12" font-weight="400" fill="#333333">2025</text>
+<polyline fill="none" stroke="#ce011f" stroke-width="3" points="60.0,239.4 119.1,224.3 178.2,219.1 237.3,181.8 296.4,162.0 355.5,139.9 414.5,135.3 473.6,134.7 532.7,153.9"/>
+<text x="538.7" y="157.9" font-size="12" font-weight="600" fill="#ce011f">2026</text>
+<text x="20" y="448" font-size="12" fill="#777">Data provided by MLSListings, Inc.</text></svg>
