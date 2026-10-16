@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 815" width="1200" height="815" font-family="Inter, Helvetica, Arial, sans-serif">
+<rect width="1200" height="815" fill="#faf9f7"/>
+<text x="90" y="80" font-size="40" font-weight="700" fill="#141414">Precio de venta vs. precio de lista original</text>
+<text x="90" y="122" font-size="22" fill="#6b6b6b">Por días en el mercado. Condado de Monterey, en lo que va del año al 20 de sept. de 2026</text>
+<line x1="90" x2="1110" y1="502.5" y2="502.5" stroke="#e4e2de" stroke-width="1"/>
+<text x="78" y="508.5" font-size="16" fill="#6b6b6b" text-anchor="end">25%</text>
+<line x1="90" x2="1110" y1="405.0" y2="405.0" stroke="#e4e2de" stroke-width="1"/>
+<text x="78" y="411.0" font-size="16" fill="#6b6b6b" text-anchor="end">50%</text>
+<line x1="90" x2="1110" y1="307.5" y2="307.5" stroke="#e4e2de" stroke-width="1"/>
+<text x="78" y="313.5" font-size="16" fill="#6b6b6b" text-anchor="end">75%</text>
+<line x1="90" x2="1110" y1="210.0" y2="210.0" stroke="#e4e2de" stroke-width="1"/>
+<text x="78" y="216.0" font-size="16" fill="#6b6b6b" text-anchor="end">100%</text>
+<rect x="146.1" y="211.2" width="142.8" height="388.8" fill="#c8102e"/>
+<text x="217.5" y="255.2" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">99.7%</text>
+<text x="217.5" y="640" font-size="26" font-weight="700" fill="#141414" text-anchor="middle">0-30</text>
+<text x="217.5" y="750" font-size="24" font-weight="600" fill="#c8102e" text-anchor="middle">$897,300</text>
+<rect x="401.1" y="231.4" width="142.8" height="368.6" fill="#141414"/>
+<text x="472.5" y="275.4" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">94.5%</text>
+<text x="472.5" y="640" font-size="26" font-weight="700" fill="#141414" text-anchor="middle">31-60</text>
+<text x="472.5" y="750" font-size="24" font-weight="600" fill="#141414" text-anchor="middle">$850,500</text>
+<rect x="656.1" y="241.2" width="142.8" height="358.8" fill="#141414"/>
+<text x="727.5" y="285.2" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">92.0%</text>
+<text x="727.5" y="640" font-size="26" font-weight="700" fill="#141414" text-anchor="middle">61-90</text>
+<text x="727.5" y="750" font-size="24" font-weight="600" fill="#141414" text-anchor="middle">$828,000</text>
+<rect x="911.1" y="257.6" width="142.8" height="342.4" fill="#141414"/>
+<text x="982.5" y="301.6" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">87.8%</text>
+<text x="982.5" y="640" font-size="26" font-weight="700" fill="#141414" text-anchor="middle">Más de 90</text>
+<text x="982.5" y="750" font-size="24" font-weight="600" fill="#141414" text-anchor="middle">$790,200</text>
+<line x1="90" x2="1110" y1="600" y2="600" stroke="#141414" stroke-width="2"/>
+<text x="600.0" y="668" font-size="18" fill="#6b6b6b" text-anchor="middle">Días en el mercado</text>
+<text x="90" y="712" font-size="18" fill="#6b6b6b">Con un precio de lista original de $900,000:</text>
+<text x="90" y="801" font-size="16" fill="#6b6b6b">Datos: MLSListings, Inc. Gráfica: Anthony Diaz, diazoffice.com</text>
+</svg>

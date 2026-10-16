@@ -43,3 +43,13 @@ export const blogCategories = [
 ] as const;
 
 export type BlogCategorySlug = (typeof blogCategories)[number]["slug"];
+
+// Optional per-post topic that replaces the category label on cards and post pages.
+export const postTopics = { buying: "Buying", selling: "Selling" } as const;
+export type PostTopic = keyof typeof postTopics;
+
+/** Label shown on a post: its topic if set, otherwise its category label. */
+export function getPostLabel(post: { category: BlogCategorySlug; topic?: PostTopic }): string {
+  if (post.topic) return postTopics[post.topic];
+  return blogCategories.find((c) => c.slug === post.category)?.label ?? post.category;
+}

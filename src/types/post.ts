@@ -1,4 +1,4 @@
-import type { BlogCategorySlug } from "@/lib/site-config";
+import type { BlogCategorySlug, PostTopic } from "@/lib/site-config";
 
 export type TimelineEntry = {
   date: string; // display string, e.g. "1925" or "July 2026" — not necessarily ISO, often approximate
@@ -14,6 +14,7 @@ export type PostFrontmatter = {
   excerpt: string;
   date: string; // ISO format: 2026-03-14
   category: BlogCategorySlug;
+  topic?: PostTopic; // "buying" | "selling", replaces the category label on cards and the post page
   coverImage?: string;
   seoDescription?: string;
   status: "draft" | "published";

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import type { Post } from "@/types/post";
-import { blogCategories, siteConfig } from "@/lib/site-config";
+import { getPostLabel, siteConfig } from "@/lib/site-config";
 import { PostTimeline } from "@/components/post-timeline";
 import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
 import { TimelineBuyer } from "@/components/timeline-buyer";
@@ -23,7 +23,7 @@ export type ChapterNav = {
 };
 
 export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: ChapterNav }) {
-  const categoryLabel = blogCategories.find((c) => c.slug === post.category)?.label;
+  const categoryLabel = getPostLabel(post);
 
   const jsonLd = {
     "@context": "https://schema.org",

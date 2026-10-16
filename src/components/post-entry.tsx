@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Post } from "@/types/post";
-import { blogCategories } from "@/lib/site-config";
+import { getPostLabel } from "@/lib/site-config";
 import { getPostPath } from "@/lib/guides";
 
 function formatDate(iso: string) {
@@ -12,10 +12,6 @@ function formatDate(iso: string) {
   });
 }
 
-function categoryLabel(slug: Post["category"]) {
-  return blogCategories.find((c) => c.slug === slug)?.label ?? slug;
-}
-
 export function PostEntry({ post }: { post: Post }) {
   return (
     <Link
@@ -25,7 +21,7 @@ export function PostEntry({ post }: { post: Post }) {
       <span className="label-tag pt-1 whitespace-nowrap">{formatDate(post.date)}</span>
       <div>
         <span className="label-tag label-tag--accent">
-          {post.chapter != null ? `Chapter ${post.chapter}` : categoryLabel(post.category)}
+          {post.chapter != null ? `Chapter ${post.chapter}` : getPostLabel(post)}
         </span>
         <h3 className="mt-2 text-xl sm:text-2xl font-semibold tracking-tight group-hover:text-kw-red transition-colors">
           {post.title}
