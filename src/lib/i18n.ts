@@ -216,7 +216,7 @@ export const strings: Record<Lang, Strings> = {
       eyebrow: "Cronología",
       title: "Fechas clave",
       source: "Fuente:",
-      unconfirmed: "Sin confirmar — incluido como contexto",
+      unconfirmed: "Sin confirmar, incluido como contexto",
     },
     categories: {
       history: "Historia",
@@ -230,27 +230,27 @@ export const strings: Record<Lang, Strings> = {
         title: "Guía del comprador",
         heading: "Comprar una casa en el condado de Monterey",
         intro:
-          "Respuestas claras y directas a las preguntas que de verdad surgen, desde tu primera oferta hasta el recorrido final antes del cierre.",
+          "Respuestas claras y directas a las preguntas que de verdad surgen, desde su primera oferta hasta el recorrido final antes del cierre.",
         metaDescription:
-          "Todo lo que necesitas saber para comprar una casa en el condado de Monterey, desde las ofertas hasta las contingencias y el día del cierre.",
+          "Todo lo que necesita saber para comprar una casa en el condado de Monterey, desde las ofertas hasta las contingencias y el día del cierre.",
       },
       "sellers-guide": {
         title: "Guía del vendedor",
         heading: "Vender una casa en el condado de Monterey",
         intro:
-          "Lo que debes saber para vender una casa en el condado de Monterey, desde el precio hasta las reglas locales que surgen durante el escrow.",
+          "Lo que debe saber para vender una casa en el condado de Monterey, desde el precio hasta las reglas locales que surgen durante el escrow.",
         metaDescription:
-          "Lo que debes saber para vender una casa en el condado de Monterey, desde el precio hasta las reglas locales que surgen durante el escrow.",
+          "Lo que debe saber para vender una casa en el condado de Monterey, desde el precio hasta las reglas locales que surgen durante el escrow.",
       },
     },
-    guideEyebrow: "Tutoriales",
-    guideEmpty: "Los artículos de la guía están en preparación. Vuelve pronto.",
+    guideEyebrow: "Guías",
+    guideEmpty: "Los artículos de la guía están en preparación. Vuelva pronto.",
     home: {
       eyebrow: "Condado de Monterey, California",
       heading: "La historia detrás de la península de Monterey.",
       intro:
         "Bienes raíces en el condado de Monterey con un agente local a quien le encanta su historia.",
-      guidesEyebrow: "Tutoriales",
+      guidesEyebrow: "Guías",
       guidesTitle: "Guías",
       openGuide: "Abrir la guía",
       recentEyebrow: "Publicado recientemente",
@@ -258,13 +258,13 @@ export const strings: Record<Lang, Strings> = {
       recentEmpty: "Todavía no hay artículos publicados en español.",
       ctaEyebrow: "Trabajemos juntos",
       ctaTitle: "Un agente local que sabe por qué este condado luce como luce.",
-      ctaButton: "Ponte en contacto",
+      ctaButton: "Comuníquese conmigo",
     },
     contact: {
       metaTitle: "Contacto",
-      metaDescription: (name, brokerage) => `Ponte en contacto con ${name}, ${brokerage}.`,
-      eyebrow: "Ponte en contacto",
-      heading: "Preguntas sobre comprar, vender o simplemente sobre el pueblo: envíalas.",
+      metaDescription: (name, brokerage) => `Comuníquese con ${name}, ${brokerage}.`,
+      eyebrow: "Comuníquese conmigo",
+      heading: "¿Preguntas sobre comprar, vender o simplemente sobre el área? Envíemelas.",
       direct: "Directo",
       form: {
         name: "Nombre",
@@ -274,9 +274,9 @@ export const strings: Record<Lang, Strings> = {
         send: "Enviar mensaje",
         sending: "Enviando...",
         sentTitle: "Mensaje enviado.",
-        sentBody: "Te responderé pronto, normalmente en un día.",
-        genericError: "Algo salió mal. Inténtalo de nuevo.",
-        networkError: "No se pudo conectar con el servidor. Inténtalo de nuevo en un momento.",
+        sentBody: "Le responderé pronto, normalmente en un día.",
+        genericError: "Algo salió mal. Inténtelo de nuevo.",
+        networkError: "No se pudo conectar con el servidor. Inténtelo de nuevo en un momento.",
       },
     },
     notFound: {
