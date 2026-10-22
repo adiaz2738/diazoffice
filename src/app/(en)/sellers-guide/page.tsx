@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { getGuideChapters } from "@/lib/posts";
 import { PostEntry } from "@/components/post-entry";
+import { staticPageAlternates } from "@/lib/alternates";
 
 export const metadata: Metadata = {
   title: "Seller's Guide",
   description:
     "What to know about selling a home in Monterey County, from pricing to the local rules that come up in escrow.",
+  alternates: staticPageAlternates("en", "/sellers-guide"),
 };
 
 export default function SellersGuidePage() {

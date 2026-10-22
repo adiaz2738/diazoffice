@@ -5,17 +5,40 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { primaryNav, siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { strings, type Lang } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 
-export function Header() {
+// `switchMap` maps this page's path to its translation's path; pages without a translation
+// fall back to the other language's home.
+export function Header({
+  lang = "en",
+  switchMap = {},
+}: {
+  lang?: Lang;
+  switchMap?: Record<string, string>;
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const s = strings[lang];
+  const otherLang: Lang = lang === "en" ? "es" : "en";
+  const switchHref = switchMap[pathname] ?? strings[otherLang].homeHref;
+  const switchLink = (
+    <Link
+      href={switchHref}
+      lang={otherLang}
+      hrefLang={otherLang}
+      onClick={() => setOpen(false)}
+      className="text-sm font-medium text-muted transition-colors hover:text-kw-red"
+    >
+      {strings[otherLang].switchLabel}
+    </Link>
+  );
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" onClick={() => setOpen(false)}>
+        <Link href={s.homeHref} onClick={() => setOpen(false)}>
           <Image
             src="/diazoffice-logo.svg"
             alt="Anthony Diaz"
@@ -28,7 +51,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {primaryNav.map((item) => {
+          {s.nav.map((item) => {
             const active = pathname.startsWith(item.href);
             return (
               <Link
@@ -44,17 +67,18 @@ export function Header() {
             );
           })}
           <Link
-            href="/contact"
+            href={s.contactHref}
             className="border border-ink px-4 py-2 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
           >
-            Contact
+            {s.header.contact}
           </Link>
+          {switchLink}
         </nav>
 
         {/* Mobile trigger */}
         <button
           type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? s.header.closeMenu : s.header.openMenu}
           aria-expanded={open}
           className="md:hidden p-2 -mr-2"
           onClick={() => setOpen((v) => !v)}
@@ -66,7 +90,7 @@ export function Header() {
       {/* Mobile menu */}
       {open && (
         <nav className="md:hidden border-t border-line bg-paper px-5 py-4 flex flex-col gap-1">
-          {primaryNav.map((item) => (
+          {s.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -77,12 +101,13 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href={s.contactHref}
             onClick={() => setOpen(false)}
             className="mt-4 text-center border border-ink px-4 py-3 text-sm font-medium"
           >
-            Contact
+            {s.header.contact}
           </Link>
+          <div className="mt-3 text-center">{switchLink}</div>
           <a
             href={`tel:${siteConfig.phone.replace(/[^\d]/g, "")}`}
             className="mt-2 text-center text-sm text-muted"

@@ -5,15 +5,23 @@ import type { TimelineEntry } from "@/types/post";
 import { SectionHeading } from "@/components/section-heading";
 import { PostTimeline } from "@/components/post-timeline";
 import { cn } from "@/lib/cn";
+import { strings, type Lang } from "@/lib/i18n";
 
-export function PostTimelineHorizontal({ entries }: { entries: TimelineEntry[] }) {
+export function PostTimelineHorizontal({
+  entries,
+  lang = "en",
+}: {
+  entries: TimelineEntry[];
+  lang?: Lang;
+}) {
+  const t = strings[lang].timeline;
   const [selected, setSelected] = useState(0);
   const active = entries[selected];
 
   return (
     <div className="mt-12">
       <div className="hidden md:block">
-        <SectionHeading eyebrow="Timeline" title="Key dates" />
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} />
 
         <div className="mt-8 overflow-x-auto scroll-smooth snap-x snap-mandatory">
           <div className="flex min-w-max">
@@ -54,16 +62,16 @@ export function PostTimelineHorizontal({ entries }: { entries: TimelineEntry[] }
               href={active.sourceUrl}
               className="mt-2 inline-block text-xs text-kw-red underline underline-offset-2"
             >
-              Source: {active.sourceLabel}
+              {t.source} {active.sourceLabel}
             </a>
           ) : !active.confirmed ? (
-            <p className="mt-2 text-xs text-muted italic">Unconfirmed — included for context</p>
+            <p className="mt-2 text-xs text-muted italic">{t.unconfirmed}</p>
           ) : null}
         </div>
       </div>
 
       <div className="md:hidden">
-        <PostTimeline entries={entries} />
+        <PostTimeline entries={entries} lang={lang} />
       </div>
     </div>
   );

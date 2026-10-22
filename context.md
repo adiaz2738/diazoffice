@@ -77,6 +77,18 @@ coverImage?, seoDescription?, status (draft | published), sources? (string[])
   market" post as a normal blog post with that category is enough to have it show
   up there too. No separate content system needed.
 
+## Spanish (/es/)
+
+- Spanish MDX lives in `src/content/es/posts/<spanish-slug>.mdx`: same frontmatter as English
+  plus `translationOf: "<english-slug>"`. Same status rules (only `published` ships).
+- Routes: `/es`, `/es/guia-del-comprador[/slug]`, `/es/guia-del-vendedor[/slug]`, `/es/blog/[slug]`,
+  `/es/contacto`. Only Spanish content is listed; there is no English fallback inside `/es/`.
+- All interface text (both languages) is in `src/lib/i18n.ts`. hreflang/switch/sitemap pairing is in
+  `src/lib/alternates.ts`; Spanish page logic is in `src/lib/es-pages.tsx`.
+- `src/app/` has two root layouts, `(en)` and `(es)`, so `<html lang>` is right per section.
+  New English routes go under `src/app/(en)/`. Unmatched URLs use `src/app/global-not-found.tsx`
+  (needs `experimental.globalNotFound` in `next.config.ts`).
+
 ## Design system
 
 Palette (defined as CSS variables in `src/app/globals.css`, exposed as Tailwind

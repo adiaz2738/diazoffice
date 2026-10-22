@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { isGuideCategory } from "@/lib/guides";
 import { buildPostMetadata } from "@/lib/post-metadata";
+import { englishPostLanguages } from "@/lib/alternates";
 import { PostArticle } from "@/components/post-article";
 
 export function generateStaticParams() {
@@ -20,7 +21,8 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post || isGuideCategory(post.category)) return {};
 
-  return buildPostMetadata(post, `/blog/${post.slug}`);
+  const path = `/blog/${post.slug}`;
+  return buildPostMetadata(post, path, "en", englishPostLanguages(post.slug, path));
 }
 
 export default async function BlogPostPage({

@@ -3,11 +3,13 @@ import { getGuideChapters } from "@/lib/posts";
 import { PostEntry } from "@/components/post-entry";
 import { videos } from "@/lib/videos-data";
 import { YoutubeEmbed } from "@/components/youtube-embed";
+import { staticPageAlternates } from "@/lib/alternates";
 
 export const metadata: Metadata = {
   title: "Buyer's Guide",
   description:
     "Everything you need to know about buying a home in Monterey County, from offers to contingencies to closing day.",
+  alternates: staticPageAlternates("en", "/buyers-guide"),
 };
 
 export default function BuyersGuidePage() {

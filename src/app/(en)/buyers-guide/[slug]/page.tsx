@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAdjacentChapters, getGuideChapterBySlug, getGuideChapters } from "@/lib/posts";
 import { getGuideByCategory } from "@/lib/guides";
 import { buildPostMetadata } from "@/lib/post-metadata";
+import { englishPostLanguages } from "@/lib/alternates";
 import { PostArticle } from "@/components/post-article";
 
 // This route serves one guide. Copying this file for another guide (e.g.
@@ -28,7 +29,8 @@ export async function generateMetadata({
   const post = getGuideChapterBySlug(GUIDE_CATEGORY, slug);
   if (!post) return {};
 
-  return buildPostMetadata(post, `${guide().basePath}/${post.slug}`);
+  const path = `${guide().basePath}/${post.slug}`;
+  return buildPostMetadata(post, path, "en", englishPostLanguages(post.slug, path));
 }
 
 export default async function GuideChapterPage({

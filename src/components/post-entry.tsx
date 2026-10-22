@@ -1,27 +1,20 @@
 import Link from "next/link";
 import type { Post } from "@/types/post";
-import { getPostLabel } from "@/lib/site-config";
 import { getPostPath } from "@/lib/guides";
+import { formatDate, getPostLabelFor, strings, type Lang } from "@/lib/i18n";
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  });
-}
-
-export function PostEntry({ post }: { post: Post }) {
+export function PostEntry({ post, lang = "en" }: { post: Post; lang?: Lang }) {
   return (
     <Link
-      href={getPostPath(post)}
+      href={getPostPath(post, lang)}
       className="group grid grid-cols-[auto_1fr] sm:grid-cols-[7rem_1fr] gap-4 sm:gap-8 py-7 border-b border-line"
     >
-      <span className="label-tag pt-1 whitespace-nowrap">{formatDate(post.date)}</span>
+      <span className="label-tag pt-1 whitespace-nowrap">{formatDate(post.date, lang, "short")}</span>
       <div>
         <span className="label-tag label-tag--accent">
-          {post.chapter != null ? `Chapter ${post.chapter}` : getPostLabel(post)}
+          {post.chapter != null
+            ? `${strings[lang].post.chapter} ${post.chapter}`
+            : getPostLabelFor(post, lang)}
         </span>
         <h3 className="mt-2 text-xl sm:text-2xl font-semibold tracking-tight group-hover:text-kw-red transition-colors">
           {post.title}

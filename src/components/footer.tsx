@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { primaryNav, siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { strings, type Lang } from "@/lib/i18n";
 
-export function Footer() {
+export function Footer({ lang = "en" }: { lang?: Lang }) {
+  const s = strings[lang];
   return (
     <footer className="border-t border-line mt-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-14 grid gap-12 md:grid-cols-2">
@@ -33,29 +35,19 @@ export function Footer() {
         </div>
 
         <nav className="flex flex-col gap-2 text-sm">
-          <span className="label-tag mb-2">Explore</span>
-          {primaryNav.map((item) => (
+          <span className="label-tag mb-2">{s.footer.explore}</span>
+          {[...s.nav, ...s.footerExtraNav].map((item) => (
             <Link key={item.href} href={item.href} className="text-muted hover:text-ink">
               {item.label}
             </Link>
           ))}
-          <Link href="/listings" className="text-muted hover:text-ink">
-            Listings
-          </Link>
-          <Link href="/faq" className="text-muted hover:text-ink">
-            FAQ
-          </Link>
         </nav>
       </div>
 
       <div className="border-t border-line">
         <div className="mx-auto max-w-6xl px-5 sm:px-8 py-6 flex flex-col gap-2 text-xs text-muted">
-          <p>© {new Date().getFullYear()} Anthony Diaz. All rights reserved.</p>
-          <p>
-            Keller Williams Realty, Inc., a franchise company, is an Equal Opportunity Employer
-            and supports the Fair Housing Act. Each Keller Williams® office is independently owned
-            and operated.
-          </p>
+          <p>© {new Date().getFullYear()} Anthony Diaz. {s.footer.rights}</p>
+          <p>{s.footer.kwDisclaimer}</p>
         </div>
       </div>
     </footer>

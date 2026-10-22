@@ -1,10 +1,12 @@
 import type { TimelineEntry } from "@/types/post";
 import { SectionHeading } from "@/components/section-heading";
+import { strings, type Lang } from "@/lib/i18n";
 
-export function PostTimeline({ entries }: { entries: TimelineEntry[] }) {
+export function PostTimeline({ entries, lang = "en" }: { entries: TimelineEntry[]; lang?: Lang }) {
+  const t = strings[lang].timeline;
   return (
     <div className="mt-12">
-      <SectionHeading eyebrow="Timeline" title="Key dates" />
+      <SectionHeading eyebrow={t.eyebrow} title={t.title} />
       <div className="mt-6">
         {entries.map((entry, i) => (
           <details key={i} className="group border-b border-line py-4">
@@ -21,10 +23,10 @@ export function PostTimeline({ entries }: { entries: TimelineEntry[] }) {
                   href={entry.sourceUrl}
                   className="mt-2 inline-block text-xs text-kw-red underline underline-offset-2"
                 >
-                  Source: {entry.sourceLabel}
+                  {t.source} {entry.sourceLabel}
                 </a>
               ) : !entry.confirmed ? (
-                <p className="mt-2 text-xs text-muted italic">Unconfirmed — included for context</p>
+                <p className="mt-2 text-xs text-muted italic">{t.unconfirmed}</p>
               ) : null}
             </div>
           </details>

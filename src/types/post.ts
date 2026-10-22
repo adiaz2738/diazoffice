@@ -24,6 +24,7 @@ export type PostFrontmatter = {
   timelineStyle?: "simple" | "horizontal"; // defaults to "simple" when unset
   chapter?: number; // position within a guide (see src/lib/guides.ts), unset for non-guide posts
   neighborhood?: string; // matches a Neighborhood["slug"] in src/lib/neighborhoods-data.ts, for the /neighborhoods cards
+  translationOf?: string; // Spanish posts only (src/content/es/posts): slug of the English post this translates
 };
 
 export type Post = PostFrontmatter & {

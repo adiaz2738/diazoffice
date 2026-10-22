@@ -1,9 +1,11 @@
 import type { BlogCategorySlug } from "@/lib/site-config";
 import type { Post } from "@/types/post";
+import type { Lang } from "@/lib/i18n";
 
 export type GuideConfig = {
   category: BlogCategorySlug;
   basePath: string; // e.g. "/buyers-guide" — chapters live at `${basePath}/${slug}`
+  esBasePath: string; // Spanish equivalent, e.g. "/es/guia-del-comprador"
   hubTitle: string;
   plannedChapters: number; // the "Y" in "Chapter X of Y", independent of how many files exist
 };
@@ -14,12 +16,14 @@ export const guides: GuideConfig[] = [
   {
     category: "buyers-guide",
     basePath: "/buyers-guide",
+    esBasePath: "/es/guia-del-comprador",
     hubTitle: "Buyer's Guide",
     plannedChapters: 8,
   },
   {
     category: "sellers-guide",
     basePath: "/sellers-guide",
+    esBasePath: "/es/guia-del-vendedor",
     hubTitle: "Seller's Guide",
     plannedChapters: 9,
   },
@@ -34,8 +38,9 @@ export function isGuideCategory(category: string): boolean {
 }
 
 /** Where a post's own page lives: a guide chapter URL if its category is a guide, /blog/[slug] otherwise. */
-export function getPostPath(post: Pick<Post, "category" | "slug">): string {
+export function getPostPath(post: Pick<Post, "category" | "slug">, lang: Lang = "en"): string {
   const guide = getGuideByCategory(post.category);
+  if (lang === "es") return guide ? `${guide.esBasePath}/${post.slug}` : `/es/blog/${post.slug}`;
   return guide ? `${guide.basePath}/${post.slug}` : `/blog/${post.slug}`;
 }
 

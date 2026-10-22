@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { strings, type Lang } from "@/lib/i18n";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function ContactForm() {
+export function ContactForm({ lang = "en" }: { lang?: Lang }) {
+  const t = strings[lang].contact.form;
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -27,7 +29,7 @@ export function ContactForm() {
 
       if (!res.ok) {
         setStatus("error");
-        setErrorMsg(data.error ?? "Something went wrong. Try again.");
+        setErrorMsg((lang === "en" && data.error) || t.genericError);
         return;
       }
 
@@ -35,16 +37,16 @@ export function ContactForm() {
       form.reset();
     } catch {
       setStatus("error");
-      setErrorMsg("Couldn't reach the server. Try again in a moment.");
+      setErrorMsg(t.networkError);
     }
   }
 
   if (status === "success") {
     return (
       <div className="border border-line p-8 text-center">
-        <p className="text-lg font-medium">Message sent.</p>
+        <p className="text-lg font-medium">{t.sentTitle}</p>
         <p className="text-muted mt-1 text-sm">
-          I&apos;ll get back to you shortly, usually within a day.
+          {t.sentBody}
         </p>
       </div>
     );
@@ -53,13 +55,13 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="grid sm:grid-cols-2 gap-5">
-        <Field label="Name" name="name" required />
-        <Field label="Phone" name="phone" type="tel" />
+        <Field label={t.name} name="name" required />
+        <Field label={t.phone} name="phone" type="tel" />
       </div>
-      <Field label="Email" name="email" type="email" required />
+      <Field label={t.email} name="email" type="email" required />
       <div>
         <label htmlFor="message" className="label-tag mb-2 block">
-          Message
+          {t.message}
         </label>
         <textarea
           id="message"
@@ -81,7 +83,7 @@ export function ContactForm() {
         disabled={status === "loading"}
         className="self-start border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-paper transition-colors disabled:opacity-50"
       >
-        {status === "loading" ? "Sending..." : "Send message"}
+        {status === "loading" ? t.sending : t.send}
       </button>
     </form>
   );

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import type { Post } from "@/types/post";
-import { getPostLabel, siteConfig } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { formatDate, getPostLabelFor, strings, type Lang } from "@/lib/i18n";
 import { PostTimeline } from "@/components/post-timeline";
 import { PostTimelineHorizontal } from "@/components/post-timeline-horizontal";
 import { TimelineBuyer } from "@/components/timeline-buyer";
@@ -12,6 +13,13 @@ import { Photo } from "@/components/photo";
 import { SeasideMapLoader } from "@/components/seaside-map-loader";
 
 const mdxComponents = { TimelineBuyer, SellerTimeline, Photo, SeasideMap: SeasideMapLoader };
+
+// On Spanish pages the bilingual timelines render in Spanish, whatever props the MDX passes.
+const mdxComponentsEs = {
+  ...mdxComponents,
+  TimelineBuyer: () => <TimelineBuyer lang="es" />,
+  SellerTimeline: () => <SellerTimeline lang="es" />,
+};
 
 export type ChapterNav = {
   chapterNumber: number;
@@ -22,8 +30,17 @@ export type ChapterNav = {
   backLabel: string;
 };
 
-export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: ChapterNav }) {
-  const categoryLabel = getPostLabel(post);
+export function PostArticle({
+  post,
+  chapterNav,
+  lang = "en",
+}: {
+  post: Post;
+  chapterNav?: ChapterNav;
+  lang?: Lang;
+}) {
+  const categoryLabel = getPostLabelFor(post, lang);
+  const t = strings[lang].post;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -31,6 +48,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
     headline: post.title,
     description: post.seoDescription || post.excerpt,
     datePublished: post.date,
+    ...(lang !== "en" && { inLanguage: lang }),
     ...(post.coverImage && { image: new URL(post.coverImage, siteConfig.url).href }),
     author: {
       "@type": "Person",
@@ -52,7 +70,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
       <p className="label-tag label-tag--accent mb-3">{categoryLabel}</p>
       {chapterNav && (
         <p className="label-tag mb-3">
-          Chapter {chapterNav.chapterNumber} of {chapterNav.totalChapters}
+          {t.chapterOf(chapterNav.chapterNumber, chapterNav.totalChapters)}
         </p>
       )}
       <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
@@ -60,12 +78,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
       </h1>
       <div className="mt-5 flex items-center gap-3 text-sm text-muted">
         <time dateTime={post.date}>
-          {new Date(post.date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            timeZone: "UTC",
-          })}
+          {formatDate(post.date, lang)}
         </time>
         <span aria-hidden>·</span>
         <span>{post.readingTime}</span>
@@ -79,9 +92,9 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
 
       {post.timeline && post.timeline.length > 0 && post.timelinePlacement === "top" && (
         post.timelineStyle === "horizontal" ? (
-          <PostTimelineHorizontal entries={post.timeline} />
+          <PostTimelineHorizontal entries={post.timeline} lang={lang} />
         ) : (
-          <PostTimeline entries={post.timeline} />
+          <PostTimeline entries={post.timeline} lang={lang} />
         )
       )}
 
@@ -102,22 +115,22 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
       >
         <MDXRemote
           source={post.content}
-          components={mdxComponents}
+          components={lang === "es" ? mdxComponentsEs : mdxComponents}
           options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
         />
       </div>
 
       {post.timeline && post.timeline.length > 0 && post.timelinePlacement !== "top" && (
         post.timelineStyle === "horizontal" ? (
-          <PostTimelineHorizontal entries={post.timeline} />
+          <PostTimelineHorizontal entries={post.timeline} lang={lang} />
         ) : (
-          <PostTimeline entries={post.timeline} />
+          <PostTimeline entries={post.timeline} lang={lang} />
         )
       )}
 
       {post.sources && post.sources.length > 0 && (
         <div className="mt-14 pt-8 border-t border-line">
-          <p className="label-tag mb-3">Sources</p>
+          <p className="label-tag mb-3">{t.sources}</p>
           <ul className="text-sm text-muted space-y-1">
             {post.sources.map((s) => (
               <li key={s}>{s}</li>
@@ -132,7 +145,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
             <div>
               {chapterNav.prev && (
                 <Link href={chapterNav.prev.href} className="group block">
-                  <span className="label-tag">← Chapter {chapterNav.prev.chapter}</span>
+                  <span className="label-tag">← {t.chapter} {chapterNav.prev.chapter}</span>
                   <span className="mt-1 block font-medium group-hover:text-kw-red transition-colors">
                     {chapterNav.prev.title}
                   </span>
@@ -142,7 +155,7 @@ export function PostArticle({ post, chapterNav }: { post: Post; chapterNav?: Cha
             <div className="text-right">
               {chapterNav.next && (
                 <Link href={chapterNav.next.href} className="group block">
-                  <span className="label-tag">Chapter {chapterNav.next.chapter} →</span>
+                  <span className="label-tag">{t.chapter} {chapterNav.next.chapter} →</span>
                   <span className="mt-1 block font-medium group-hover:text-kw-red transition-colors">
                     {chapterNav.next.title}
                   </span>

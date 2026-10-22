@@ -5,6 +5,7 @@ import {
   type SellerPhase,
 } from "@/lib/seller-timeline-data";
 import type { Lang } from "@/lib/buyer-timeline-data";
+import { getLocalizedChapterHref } from "@/lib/posts";
 import {
   VerticalStepTimeline,
   type TimelineGroupData,
@@ -19,6 +20,7 @@ function buildGroups(lang: Lang): TimelineGroupData[] {
   const groups: TimelineGroupData[] = [];
   for (const step of sellerTimeline) {
     const key: SellerPhase = step.phase;
+    const chapterHref = step.chapterLink && getLocalizedChapterHref(step.chapterLink.href, lang);
     const label = sellerPhases[step.phase][lang];
     const normalized = {
       id: `seller-${step.id}`,
@@ -26,9 +28,10 @@ function buildGroups(lang: Lang): TimelineGroupData[] {
       title: step.title[lang],
       summary: step.summary[lang],
       bullets: step.bullets[lang],
-      chapterLink: step.chapterLink
-        ? { href: step.chapterLink.href, label: step.chapterLink.label[lang] }
-        : undefined,
+      chapterLink:
+        step.chapterLink && chapterHref
+          ? { href: chapterHref, label: step.chapterLink.label[lang] }
+          : undefined,
       expanded: step.number === 9 ? <ContingencyOutcomesDetail lang={lang} /> : undefined,
     };
     const last = groups[groups.length - 1];
