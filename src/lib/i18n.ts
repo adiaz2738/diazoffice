@@ -50,7 +50,16 @@ type Strings = {
   >;
   guideEyebrow: string;
   guideEmpty: string;
+  blog: {
+    navLabel: string;
+    metaDescription: string;
+    eyebrow: string;
+    title: string;
+    all: string;
+    empty: string;
+  };
   home: {
+    heroAlt: string;
     eyebrow: string;
     heading: string;
     intro: string;
@@ -146,7 +155,16 @@ export const strings: Record<Lang, Strings> = {
     },
     guideEyebrow: "Tutorials",
     guideEmpty: "Guide articles are in progress. Check back soon.",
+    blog: {
+      navLabel: "Blog",
+      metaDescription: "Monterey County history, real estate market notes, and buyer's guide articles.",
+      eyebrow: "The archive",
+      title: "Blog",
+      all: "All",
+      empty: "Nothing in this category yet — check back soon.",
+    },
     home: {
+      heroAlt: "Monterey Peninsula coastline",
       eyebrow: "Monterey County, California",
       heading: "The history behind the Monterey Peninsula.",
       intro: "Real estate in Monterey County from a local who loves the history.",
@@ -245,7 +263,17 @@ export const strings: Record<Lang, Strings> = {
     },
     guideEyebrow: "Guías",
     guideEmpty: "Los artículos de la guía están en preparación. Vuelva pronto.",
+    blog: {
+      navLabel: "Blog",
+      metaDescription:
+        "Historia del condado de Monterey, notas sobre el mercado de bienes raíces y artículos de las guías.",
+      eyebrow: "El archivo",
+      title: "Blog",
+      all: "Todos",
+      empty: "Todavía no hay nada en esta categoría. Vuelva pronto.",
+    },
     home: {
+      heroAlt: "Costa de la península de Monterey",
       eyebrow: "Condado de Monterey, California",
       heading: "La historia detrás de la península de Monterey.",
       intro:

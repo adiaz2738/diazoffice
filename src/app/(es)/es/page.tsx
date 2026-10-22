@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/posts";
@@ -20,8 +21,17 @@ export default function SpanishHome() {
 
   return (
     <>
-      <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24">
+      <section className="relative overflow-hidden border-b border-line">
+        <Image
+          src="/images/hero/monterey-hero.jpg"
+          alt={s.home.heroAlt}
+          fill
+          priority
+          className="object-cover -z-20"
+          style={{ objectPosition: "center 45%" }}
+        />
+        <div className="absolute inset-0 -z-10 bg-paper/80" />
+        <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24">
           <p className="label-tag label-tag--accent mb-5">{s.home.eyebrow}</p>
           <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05] max-w-3xl">
             {s.home.heading}

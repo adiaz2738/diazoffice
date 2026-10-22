@@ -14,13 +14,16 @@ import { cn } from "@/lib/cn";
 export function Header({
   lang = "en",
   switchMap = {},
+  nav,
 }: {
   lang?: Lang;
   switchMap?: Record<string, string>;
+  nav?: { label: string; href: string }[];
 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const s = strings[lang];
+  const navItems = nav ?? s.nav;
   const otherLang: Lang = lang === "en" ? "es" : "en";
   const switchHref = switchMap[pathname] ?? strings[otherLang].homeHref;
   const switchLink = (
@@ -51,7 +54,7 @@ export function Header({
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {s.nav.map((item) => {
+          {navItems.map((item) => {
             const active = pathname.startsWith(item.href);
             return (
               <Link
@@ -90,7 +93,7 @@ export function Header({
       {/* Mobile menu */}
       {open && (
         <nav className="md:hidden border-t border-line bg-paper px-5 py-4 flex flex-col gap-1">
-          {s.nav.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}

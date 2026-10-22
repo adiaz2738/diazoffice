@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { siteConfig } from "@/lib/site-config";
-import { getLanguageSwitchMap } from "@/lib/alternates";
+import { getLanguageSwitchMap, getNav } from "@/lib/alternates";
 import type { Lang } from "@/lib/i18n";
 
 const inter = Inter({
@@ -39,9 +39,9 @@ export function RootShell({ lang, children }: { lang: Lang; children: React.Reac
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema) }}
         />
-        <Header lang={lang} switchMap={getLanguageSwitchMap(lang)} />
+        <Header lang={lang} switchMap={getLanguageSwitchMap(lang)} nav={getNav(lang)} />
         <main className="flex-1">{children}</main>
-        <Footer lang={lang} />
+        <Footer lang={lang} nav={getNav(lang)} />
       </body>
     </html>
   );

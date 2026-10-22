@@ -3,7 +3,13 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { strings, type Lang } from "@/lib/i18n";
 
-export function Footer({ lang = "en" }: { lang?: Lang }) {
+export function Footer({
+  lang = "en",
+  nav,
+}: {
+  lang?: Lang;
+  nav?: { label: string; href: string }[];
+}) {
   const s = strings[lang];
   return (
     <footer className="border-t border-line mt-24">
@@ -36,7 +42,7 @@ export function Footer({ lang = "en" }: { lang?: Lang }) {
 
         <nav className="flex flex-col gap-2 text-sm">
           <span className="label-tag mb-2">{s.footer.explore}</span>
-          {[...s.nav, ...s.footerExtraNav].map((item) => (
+          {[...(nav ?? s.nav), ...s.footerExtraNav].map((item) => (
             <Link key={item.href} href={item.href} className="text-muted hover:text-ink">
               {item.label}
             </Link>

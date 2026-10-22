@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts, getEnglishTranslation } from "@/lib/posts";
 import { getPostPath } from "@/lib/guides";
-import { hreflangLanguages, staticPagePairs } from "@/lib/alternates";
+import { getStaticPagePairs, hreflangLanguages } from "@/lib/alternates";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,7 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const abs = (path: string) => `${siteConfig.url}${path}`;
 
   // Pages that exist in both languages carry hreflang alternates on each entry.
-  const pairedStatic = staticPagePairs.flatMap((pair) => {
+  const pairs = getStaticPagePairs();
+  const pairedStatic = pairs.flatMap((pair) => {
     const languages = hreflangLanguages(pair.en, pair.es);
     return [
       { url: abs(pair.en), lastModified: new Date(), alternates: { languages } },
@@ -17,7 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  const staticRoutes = englishOnly.map((route) => ({
+  const pairedPaths = new Set(pairs.map((p) => p.en));
+  const staticRoutes = englishOnly.filter((route) => !pairedPaths.has(route)).map((route) => ({
     url: abs(route),
     lastModified: new Date(),
   }));

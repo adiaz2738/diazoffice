@@ -5,11 +5,13 @@ import { PostEntry } from "@/components/post-entry";
 import { blogCategories, type BlogCategorySlug } from "@/lib/site-config";
 import { isGuideCategory } from "@/lib/guides";
 import { cn } from "@/lib/cn";
+import { staticPageAlternates } from "@/lib/alternates";
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
     "Monterey County history, real estate market notes, and buyer's guide articles.",
+  alternates: staticPageAlternates("en", "/blog"),
 };
 
 export default async function BlogPage({
