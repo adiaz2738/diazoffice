@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">Median sale price by year, Monterey County vs. Santa Cruz County, 2021 to 2026</title>
+<desc id="d">Monterey County: 2021 $810,000; 2022 $835,000; 2023 $850,000; 2024 $899,000; 2025 $903,000; 2026 (January to September) $900,000. Santa Cruz County: 2021 $1,050,000; 2022 $1,200,000; 2023 $1,130,000; 2024 $1,190,000; 2025 $1,165,000; 2026 (January to September) $1,150,000. Residential sales. Data provided by MLSListings, Inc.</desc>
+<rect width="800" height="520" fill="#fff"/>
+<text x="40" y="48" font-size="24" font-weight="600" fill="#111">Median sale price by year</text>
+<text x="40" y="76" font-size="15" fill="#555">Residential sales, Monterey County vs. Santa Cruz County</text>
+<rect x="40" y="96" width="14" height="14" fill="#ce011f"/><text x="60" y="108" font-size="14" fill="#333">Monterey County</text>
+<rect x="190" y="96" width="14" height="14" fill="#111"/><text x="210" y="108" font-size="14" fill="#333">Santa Cruz County</text>
+<line x1="40" y1="430.0" x2="760" y2="430.0" stroke="#bbb" stroke-width="1"/>
+<rect x="70" y="230.6" width="46" height="199.4" fill="#ce011f"/>
+<text x="93.0" y="224.6" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$810K</text>
+<rect x="120" y="171.5" width="46" height="258.5" fill="#111"/>
+<text x="143.0" y="165.5" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$1.05M</text>
+<text x="118" y="454" font-size="15" fill="#333" text-anchor="middle">2021</text>
+<rect x="190" y="224.5" width="46" height="205.5" fill="#ce011f"/>
+<text x="213.0" y="218.5" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$835K</text>
+<rect x="240" y="134.6" width="46" height="295.4" fill="#111"/>
+<text x="263.0" y="128.6" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$1.20M</text>
+<text x="238" y="454" font-size="15" fill="#333" text-anchor="middle">2022</text>
+<rect x="310" y="220.8" width="46" height="209.2" fill="#ce011f"/>
+<text x="333.0" y="214.8" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$850K</text>
+<rect x="360" y="151.8" width="46" height="278.2" fill="#111"/>
+<text x="383.0" y="145.8" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$1.13M</text>
+<text x="358" y="454" font-size="15" fill="#333" text-anchor="middle">2023</text>
+<rect x="430" y="208.7" width="46" height="221.3" fill="#ce011f"/>
+<text x="453.0" y="202.7" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$899K</text>
+<rect x="480" y="137.1" width="46" height="292.9" fill="#111"/>
+<text x="503.0" y="131.1" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$1.19M</text>
+<text x="478" y="454" font-size="15" fill="#333" text-anchor="middle">2024</text>
+<rect x="550" y="207.7" width="46" height="222.3" fill="#ce011f"/>
+<text x="573.0" y="201.7" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$903K</text>
+<rect x="600" y="143.2" width="46" height="286.8" fill="#111"/>
+<text x="623.0" y="137.2" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$1.165M</text>
+<text x="598" y="454" font-size="15" fill="#333" text-anchor="middle">2025</text>
+<rect x="670" y="208.5" width="46" height="221.5" fill="#ce011f"/>
+<text x="693.0" y="202.5" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$900K</text>
+<rect x="720" y="146.9" width="46" height="283.1" fill="#111"/>
+<text x="743.0" y="140.9" font-size="12" font-weight="600" fill="#111" text-anchor="middle">$1.15M</text>
+<text x="718" y="454" font-size="15" fill="#333" text-anchor="middle">2026*</text>
+<text x="40" y="500" font-size="12" fill="#777">*2026 is January through September. Data provided by MLSListings, Inc.</text>
+</svg>

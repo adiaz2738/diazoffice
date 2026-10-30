@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="t d" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">U.S. median existing-home sale price by year, 2021 to 2025</title>
+<desc id="d">National median price of existing homes sold, per the National Association of Realtors: 2021 $346,900, up 16.9% from the year before; 2022 $386,300, up 11.4%; 2023 $389,800, up 0.9%; 2024 $407,500, up 4.5%; 2025 $414,400, up 1.7%. Mortgage rates were near 3% in 2021, rose sharply during 2022, and stayed around 6% to 7% after that. Prices kept rising, but much more slowly once mortgage rates went up.</desc>
+<rect width="800" height="520" fill="#fff"/>
+<text x="40" y="48" font-size="24" font-weight="600" fill="#111">U.S. median existing-home price</text>
+<text x="40" y="76" font-size="15" fill="#555">Resale homes, by year, with the change from the year before</text>
+<line x1="40" y1="430" x2="760" y2="430" stroke="#bbb" stroke-width="1"/>
+<rect x="67.0" y="214.2" width="90" height="215.8" fill="#ce011f"/>
+<text x="112.0" y="184.2" font-size="16" font-weight="600" fill="#111" text-anchor="middle">$347K</text>
+<text x="112.0" y="204.2" font-size="14" fill="#ce011f" text-anchor="middle">+16.9%</text>
+<text x="112.0" y="454" font-size="15" fill="#333" text-anchor="middle">2021</text>
+<rect x="211.0" y="189.6" width="90" height="240.4" fill="#888"/>
+<text x="256.0" y="159.6" font-size="16" font-weight="600" fill="#111" text-anchor="middle">$386K</text>
+<text x="256.0" y="179.6" font-size="14" fill="#888" text-anchor="middle">+11.4%</text>
+<text x="256.0" y="454" font-size="15" fill="#333" text-anchor="middle">2022</text>
+<rect x="355.0" y="187.5" width="90" height="242.5" fill="#111"/>
+<text x="400.0" y="157.5" font-size="16" font-weight="600" fill="#111" text-anchor="middle">$390K</text>
+<text x="400.0" y="177.5" font-size="14" fill="#111" text-anchor="middle">+0.9%</text>
+<text x="400.0" y="454" font-size="15" fill="#333" text-anchor="middle">2023</text>
+<rect x="499.0" y="176.4" width="90" height="253.6" fill="#111"/>
+<text x="544.0" y="146.4" font-size="16" font-weight="600" fill="#111" text-anchor="middle">$408K</text>
+<text x="544.0" y="166.4" font-size="14" fill="#111" text-anchor="middle">+4.5%</text>
+<text x="544.0" y="454" font-size="15" fill="#333" text-anchor="middle">2024</text>
+<rect x="643.0" y="172.2" width="90" height="257.8" fill="#111"/>
+<text x="688.0" y="142.2" font-size="16" font-weight="600" fill="#111" text-anchor="middle">$414K</text>
+<text x="688.0" y="162.2" font-size="14" fill="#111" text-anchor="middle">+1.7%</text>
+<text x="688.0" y="454" font-size="15" fill="#333" text-anchor="middle">2025</text>
+<rect x="40" y="96" width="14" height="14" fill="#ce011f"/><text x="60" y="108" font-size="14" fill="#333">Rates near 3%</text>
+<rect x="180" y="96" width="14" height="14" fill="#888"/><text x="200" y="108" font-size="14" fill="#333">Rates rising</text><rect x="310" y="96" width="14" height="14" fill="#111"/><text x="330" y="108" font-size="14" fill="#333">Rates around 6% to 7%</text>
+<text x="40" y="500" font-size="12" fill="#777">Annual median sale price of existing homes. Source: National Association of Realtors.</text></svg>
